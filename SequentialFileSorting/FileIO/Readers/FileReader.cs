@@ -1,19 +1,47 @@
+using System.Collections.Generic;
 using FileIO.Interfaces;
 
 namespace FileIO
 {
     public class FileReader : IFileReader
     {
-        private IBlockReader blockReader;
+        public IBlockReader BlockReader { get; set; }
+        public ILineSeparator LineSeparator { get; set; }
 
-        public FileReader(string pathToFile, IBlockReader reader = null)
+        private string[] foundLines;
+        private string readText = string.Empty;
+        private Queue<string> foundLinesQueue = new Queue<string>();
+
+        private bool linesQueueIsEmptyAndFileHasntEnded => foundLinesQueue.Count <= 0 && !BlockReader.EndOfFile;
+
+        public FileReader(IBlockReader blockReader = null, ILineSeparator lineSeparator = null)
         {
-            blockReader = reader ?? new BlockReader(pathToFile);
+            BlockReader = blockReader;
+            LineSeparator = lineSeparator;
         }
-        
+
+
         public string GetNextLine()
         {
-            return string.Empty;
+            while (linesQueueIsEmptyAndFileHasntEnded)
+            {
+                readText += BlockReader.GetNextBlock();
+                if (LineSeparator.SeparateLines(readText, out foundLines) > 0)
+                {
+                    enqueueLines();
+                    readText = LineSeparator.SeparationExcess;
+                }
+            }
+
+            return foundLinesQueue.Dequeue();
+        }
+
+        private void enqueueLines()
+        {
+            foreach (var line in foundLines)
+            {
+                foundLinesQueue.Enqueue(line);
+            }
         }
     }
 }

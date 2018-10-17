@@ -4,39 +4,56 @@ using FileIO.Interfaces;
 
 namespace FileIO
 {
-    public class BlockReader : FileBasics, IBlockReader
+    public class BlockReader : IBlockReader
     {
-        public bool EndOfFile => lastBlockLenght == 0;
+        public bool EndOfFile { get; private set; } = false;
+        public IFileIOBase FileBase;
         
-        private int lastBlockLenght;
+        protected long CurrentBlockNumber;
         
-        public BlockReader(string pathToFile, int blockSize = 8) : base(pathToFile, blockSize)
+        public BlockReader(IFileIOBase fileBase = null, int beginningBlock = 0)
         {
-            lastBlockLenght = Int32.MaxValue;
+            FileBase = fileBase;
+            CurrentBlockNumber = beginningBlock;
         }
 
 
         public string GetNextBlock()
         {
-            if (lastBlockLenght == 0) return string.Empty;
+            if (EndOfFile) return string.Empty;
             var lengthOfCurrentBlock = readNextBlock();
-            return new string(Block, 0, lengthOfCurrentBlock);
+            return new string(FileBase.Block, 0, lengthOfCurrentBlock);
         }
 
         private int readNextBlock()
         {
             var lengthOfCurrentBlock = 0;
-            using (var streamReader = new StreamReader(FilePath))
+            using (var streamReader = new StreamReader(FileBase.FilePath))
             {
                 for (var i = 0; i < CurrentBlockNumber; i++)
                 {
-                    streamReader.ReadBlock(Block, 0, BlockSize);
+                    if (isEndOfStream(streamReader)) 
+                        break;
+                    streamReader.ReadBlock(FileBase.Block, 0, FileBase.BlockSize);
                 }
 
-                lengthOfCurrentBlock = streamReader.ReadBlock(Block, 0, BlockSize);
+                lengthOfCurrentBlock = streamReader.ReadBlock(FileBase.Block, 0, FileBase.BlockSize);
             }
 
+            if (!EndOfFile) CurrentBlockNumber++;
+            
             return lengthOfCurrentBlock;
+        }
+
+        private bool isEndOfStream(StreamReader streamReader)
+        {
+            if (!streamReader.EndOfStream) 
+                return false;
+            
+            EndOfFile = true;
+            FileBase.ClearBlock();
+            return true;
+
         }
     }
 }
