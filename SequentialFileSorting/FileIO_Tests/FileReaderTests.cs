@@ -75,7 +75,7 @@ namespace FileIO_Tests
                 "Line 1",
                 "Line 2",
                 "Line 3",
-                "Maybe incomplete line"
+                "Last line without newline"
             };
             
             var fileReader = new FileReader(
@@ -89,6 +89,7 @@ namespace FileIO_Tests
                 actualLines[i] = fileReader.GetNextLine();
             }
             
+            Assert.True(fileReader.EndOfFile);
             CollectionAssert.AreEqual(expectedLines, actualLines);
         }
     }

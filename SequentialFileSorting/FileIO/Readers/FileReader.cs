@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FileIO.Interfaces;
 
@@ -5,6 +6,8 @@ namespace FileIO
 {
     public class FileReader : IFileReader
     {
+        public bool EndOfFile => BlockReader.EndOfFile;
+        
         public IBlockReader BlockReader { get; set; }
         public ILineSeparator LineSeparator { get; set; }
 
@@ -33,7 +36,9 @@ namespace FileIO
                 }
             }
 
-            return foundLinesQueue.Dequeue();
+            return foundLinesQueue.Count > 0
+                ? foundLinesQueue.Dequeue()
+                : readText.Replace(Environment.NewLine, string.Empty);
         }
 
         private void enqueueLines()
