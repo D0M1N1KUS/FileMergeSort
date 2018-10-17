@@ -43,7 +43,10 @@
     <Compile Include="Readers\BlockReader.cs" />
     <Compile Include="Readers\FileReader.cs" />
     <Compile Include="Readers\Interfaces\IBlockReader.cs" />
+    <Compile Include="Readers\Interfaces\IFileIOBase.cs" />
     <Compile Include="Readers\Interfaces\IFileReader.cs" />
+    <Compile Include="Readers\Interfaces\ILineSeparator.cs" />
+    <Compile Include="Readers\NewlineSeparator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Writers" />

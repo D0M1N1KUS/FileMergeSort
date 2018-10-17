@@ -17,8 +17,11 @@
           <e p="FileReader.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IBlockReader.cs" t="Include" />
+            <e p="IFileIOBase.cs" t="Include" />
             <e p="IFileReader.cs" t="Include" />
+            <e p="ILineSeparator.cs" t="Include" />
           </e>
+          <e p="NewlineSeparator.cs" t="Include" />
         </e>
         <e p="Writers" t="Include" />
       </e>
@@ -26,12 +29,13 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="FileIO_Tests.csproj" t="IncludeRecursive" />
         <e p="FileReaderTests.cs" t="Include" />
+        <e p="NewLineSeparatorTests.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
-        <e p="Tests.cs" t="Include" />
+        <e p="TEST.txt" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="SequentialFileSorting" t="IncludeRecursive">

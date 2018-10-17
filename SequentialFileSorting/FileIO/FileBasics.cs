@@ -1,21 +1,20 @@
 using System.IO;
+using FileIO.Interfaces;
 
 namespace FileIO
 {
-    public  class FileBasics
+    public  class FileBasics : IFileIOBase
     {
-        protected readonly string FilePath;
-        protected readonly int BlockSize;
-        protected char[] Block;
-
-        protected long CurrentBlockNumber;
+        public string FilePath { get; set; }
+        public int BlockSize  { get; set; }
+        public char[] Block { get; set; }
         
         public FileBasics(string pathToFile, int blockSize)
         {
             CheckIfFileExists(pathToFile);
             FilePath = pathToFile;
 
-            blockSize = ValidateBlockSize(blockSize) ? blockSize : 8;
+            BlockSize = ValidateBlockSize(blockSize) ? blockSize : 8;
             Block = new char[this.BlockSize];
         }
         
@@ -32,7 +31,7 @@ namespace FileIO
             return blockSize > 0;
         }
         
-        protected void clearBlock()
+        public void ClearBlock()
         {
             for (var i = 0; i < BlockSize; i++)
             {
