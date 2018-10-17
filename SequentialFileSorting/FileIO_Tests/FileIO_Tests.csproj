@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockSplitterTests.cs" />
     <Compile Include="FileReaderTests.cs" />
     <Compile Include="NewLineSeparatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

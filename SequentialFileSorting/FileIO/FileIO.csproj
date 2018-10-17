@@ -38,18 +38,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileBasics.cs" />
+    <Compile Include="FileIOBasics.cs" />
+    <Compile Include="IFileIOBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\BlockReader.cs" />
     <Compile Include="Readers\FileReader.cs" />
     <Compile Include="Readers\Interfaces\IBlockReader.cs" />
-    <Compile Include="Readers\Interfaces\IFileIOBase.cs" />
     <Compile Include="Readers\Interfaces\IFileReader.cs" />
     <Compile Include="Readers\Interfaces\ILineSeparator.cs" />
     <Compile Include="Readers\NewlineSeparator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Writers" />
+    <Compile Include="Writers\BlockSplitter.cs" />
+    <Compile Include="Writers\FileWriter.cs" />
+    <Compile Include="Writers\Interfaces\IBlockSplitter.cs" />
+    <Compile Include="Writers\Interfaces\IFileWriter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

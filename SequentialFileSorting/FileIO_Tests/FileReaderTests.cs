@@ -80,7 +80,7 @@ namespace FileIO_Tests
             
             var fileReader = new FileReader(
                 new BlockReader(
-                    new FileBasics(@"D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\FileIO_Tests\TEST.txt", 1)), 
+                    new FileIOBasics(@"D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\FileIO_Tests\TEST.txt", 1)), 
                 new NewlineSeparator());
             var actualLines = new string[4];
 

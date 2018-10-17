@@ -3,14 +3,17 @@ using FileIO.Interfaces;
 
 namespace FileIO
 {
-    public  class FileBasics : IFileIOBase
+    public  class FileIOBasics : IFileIOBase
     {
         public string FilePath { get; set; }
         public int BlockSize  { get; set; }
         public char[] Block { get; set; }
-        
-        public FileBasics(string pathToFile, int blockSize)
+
+        private bool createNewFile;
+
+        public FileIOBasics(string pathToFile, int blockSize, bool createNewFile = false)
         {
+            this.createNewFile = createNewFile;
             CheckIfFileExists(pathToFile);
             FilePath = pathToFile;
 
@@ -22,7 +25,7 @@ namespace FileIO
         {
             if(string.IsNullOrEmpty(filePath)) 
                 throw new IOException("The provided path is null or empty!");
-            if (!File.Exists(filePath))
+            if (!File.Exists(filePath) && !createNewFile)
                 throw new IOException("The file " + filePath + " does not exist!");
         }
 
