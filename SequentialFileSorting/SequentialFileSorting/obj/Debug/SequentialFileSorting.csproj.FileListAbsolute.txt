@@ -1,0 +1,1 @@
+D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\bin\Debug\SequentialFileSorting.exe.config
