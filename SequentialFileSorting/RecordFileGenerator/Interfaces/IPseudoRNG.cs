@@ -1,6 +1,6 @@
 namespace RecordFileGenerator.Interfaces
 {
-    public interface IPseugeRNG
+    public interface IPseudoRNG
     {
         double GetDouble();
         int GetInt();

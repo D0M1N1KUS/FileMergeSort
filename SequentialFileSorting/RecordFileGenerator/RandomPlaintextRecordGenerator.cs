@@ -8,9 +8,9 @@ namespace RecordFileGenerator
 {
     public class RandomPlaintextRecordGenerator : IRandomRecordGenerator
     {
-        public IPseugeRNG Randomizer;
+        public IPseudoRNG Randomizer;
 
-        public RandomPlaintextRecordGenerator(IPseugeRNG randomizer = null, int? seed = null)
+        public RandomPlaintextRecordGenerator(IPseudoRNG randomizer = null, int? seed = null)
         {
             Randomizer = randomizer ?? new PseudoRNG(seed ?? DateTime.Now.Millisecond);
         }

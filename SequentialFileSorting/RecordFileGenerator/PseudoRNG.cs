@@ -3,7 +3,7 @@ using RecordFileGenerator.Interfaces;
 
 namespace RecordFileGenerator
 {
-    public class PseudoRNG : IPseugeRNG
+    public class PseudoRNG : IPseudoRNG
     {
         private Random random;
 
