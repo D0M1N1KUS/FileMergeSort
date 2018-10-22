@@ -19,6 +19,8 @@ namespace FileIO
 
             BlockSize = ValidateBlockSize(blockSize) ? blockSize : 8;
             Block = new char[this.BlockSize];
+
+            createNewFileIfNecessary();
         }
         
         public void CheckIfFileExists(string filePath)
@@ -40,6 +42,12 @@ namespace FileIO
             {
                 Block[i] = '\0';
             }
+        }
+
+        private void createNewFileIfNecessary()
+        {
+            if (createNewFile)
+                File.Create(FilePath);
         }
     }
 }

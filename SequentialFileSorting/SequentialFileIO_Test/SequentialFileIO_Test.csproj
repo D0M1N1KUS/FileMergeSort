@@ -4,11 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0214CDB1-A33D-42F5-89B4-FACF43E9A478}</ProjectGuid>
+    <ProjectGuid>{6E25FB5B-3C49-49E3-9E4F-8F9542CD3B40}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FileIO</RootNamespace>
-    <AssemblyName>FileIO</AssemblyName>
+    <RootNamespace>SequentialFileIO_Test</RootNamespace>
+    <AssemblyName>SequentialFileIO_Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,30 +37,19 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\FileReaderBuilder.cs" />
-    <Compile Include="FileIOBasics.cs" />
+    <Compile Include="FibonacciSequenceGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Readers\BlockReader.cs" />
-    <Compile Include="Readers\FileReader.cs" />
-    <Compile Include="Readers\Interfaces\IBlockReader.cs" />
-    <Compile Include="Readers\Interfaces\IFileIOBase.cs" />
-    <Compile Include="Readers\Interfaces\IFileReader.cs" />
-    <Compile Include="Readers\Interfaces\ILineSeparator.cs" />
-    <Compile Include="Readers\NewlineSeparator.cs" />
-    <Compile Include="RecordIO\Interfaces\IRecord.cs" />
-    <Compile Include="RecordIO\Interfaces\IRecordAppender.cs" />
-    <Compile Include="RecordIO\Interfaces\IRecordReader.cs" />
-    <Compile Include="RecordIO\Interfaces\IValueComponentsSplitter.cs" />
-    <Compile Include="RecordIO\Record.cs" />
-    <Compile Include="RecordIO\LineBasedRecordReader.cs" />
-    <Compile Include="RecordIO\RecordAppender.cs" />
-    <Compile Include="RecordIO\ValueComponentsSplitter.cs" />
-    <Compile Include="Writers\BlockSplitter.cs" />
-    <Compile Include="Writers\BlockWriter.cs" />
-    <Compile Include="Writers\Interfaces\IBlockSplitter.cs" />
-    <Compile Include="Writers\Interfaces\IFileWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SequentialFileIO\SequentialFileIO.csproj">
+      <Project>{85dc1734-817e-4e65-ab3f-3fad6be16ad3}</Project>
+      <Name>SequentialFileIO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
