@@ -30,6 +30,11 @@ namespace FileIO.Writers
             }
         }
 
+        public void WriteLine(string text)
+        {
+            Write(text + Environment.NewLine);
+        }
+
         public void Flush()
         {
             using (var streamWriter = new StreamWriter(FileBase.FilePath, append: true))

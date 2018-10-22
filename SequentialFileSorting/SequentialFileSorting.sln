@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileIO_Tests", "FileIO_Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileIO", "FileIO\FileIO.csproj", "{0214CDB1-A33D-42F5-89B4-FACF43E9A478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordFileGenerator", "RecordFileGenerator\RecordFileGenerator.csproj", "{C56F05A4-9B7E-49F6-B5DF-3FDACD9A3970}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{0214CDB1-A33D-42F5-89B4-FACF43E9A478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0214CDB1-A33D-42F5-89B4-FACF43E9A478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0214CDB1-A33D-42F5-89B4-FACF43E9A478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56F05A4-9B7E-49F6-B5DF-3FDACD9A3970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56F05A4-9B7E-49F6-B5DF-3FDACD9A3970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56F05A4-9B7E-49F6-B5DF-3FDACD9A3970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56F05A4-9B7E-49F6-B5DF-3FDACD9A3970}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
