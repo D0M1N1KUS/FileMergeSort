@@ -5,19 +5,21 @@ namespace FileIO
 {
     public  class FileIOBasics : IFileIOBase
     {
+        private const int DEFAULT_BLOCK_SIZE = 8;
+        
         public string FilePath { get; set; }
         public int BlockSize  { get; set; }
         public char[] Block { get; set; }
 
         private bool createNewFile;
 
-        public FileIOBasics(string pathToFile, int blockSize, bool createNewFile = false)
+        public FileIOBasics(string pathToFile, int blockSize = 0, bool createNewFile = false)
         {
             this.createNewFile = createNewFile;
             CheckIfFileExists(pathToFile);
             FilePath = pathToFile;
 
-            BlockSize = ValidateBlockSize(blockSize) ? blockSize : 8;
+            BlockSize = ValidateBlockSize(blockSize) ? blockSize : DEFAULT_BLOCK_SIZE;
             Block = new char[this.BlockSize];
 
             createNewFileIfNecessary();

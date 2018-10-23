@@ -11,6 +11,11 @@ namespace RecordFileGenerator
         {
             random = new Random(seed);
         }
+
+        public PseudoRNG()
+        {
+            random = new Random((int)DateTime.Now.Ticks);
+        }
         
         public double GetDouble()
         {
@@ -25,6 +30,11 @@ namespace RecordFileGenerator
         public int GetInt(int from, int to)
         {
             return random.Next(from, to);
+        }
+
+        public bool GetBool(double chanceForTrue = 0.5)
+        {
+            return GetDouble() >= 1 - chanceForTrue;
         }
     }
 }

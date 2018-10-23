@@ -7,6 +7,6 @@ namespace SequentialFileIO
     {
         string FilePath { get; }
         int Sequences { get; set; }
-        SequentialFileType FileType { get; set; }
+        FileOperationType FileOperationType { get; set; }
     }
 }
