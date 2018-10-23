@@ -17,7 +17,8 @@ namespace FileIO.RecordIO
             
         }
 
-        public LineBasedRecordReader(IBlockReader blockReader, ILineSeparator lineSeparator)
+        public LineBasedRecordReader(IBlockReader blockReader, ILineSeparator lineSeparator, 
+            IValueComponentsSplitter splitter)
         {
             FileReader = new FileReader(blockReader, lineSeparator);
         }

@@ -6,12 +6,12 @@ using FileIO.Writers.Interfaces;
 
 namespace FileIO.Writers
 {
-    public class FileWriter : IFileWriter
+    public class BlockWriter : IFileWriter
     {
         public IFileIOBase FileBase;
         public IBlockSplitter BlockSplitter;
 
-        public FileWriter(IFileIOBase fileBase = null, IBlockSplitter blockSplitter = null)
+        public BlockWriter(IFileIOBase fileBase = null, IBlockSplitter blockSplitter = null, bool overwriteFile = false)
         {
             FileBase = fileBase;
             BlockSplitter = blockSplitter;

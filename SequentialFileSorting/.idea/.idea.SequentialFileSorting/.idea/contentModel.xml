@@ -7,7 +7,9 @@
       <e p="FileIO" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Builders" t="Include">
+          <e p="FileIOBuilderBase.cs" t="Include" />
           <e p="FileReaderBuilder.cs" t="Include" />
+          <e p="FileWriterBuilder.cs" t="Include" />
         </e>
         <e p="FileIO.csproj" t="IncludeRecursive" />
         <e p="FileIoBasics.cs" t="Include" />
@@ -40,7 +42,7 @@
         </e>
         <e p="Writers" t="Include">
           <e p="BlockSplitter.cs" t="Include" />
-          <e p="FileWriter.cs" t="Include" />
+          <e p="BlockWriter.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IBlockSplitter.cs" t="Include" />
             <e p="IFileWriter.cs" t="Include" />
@@ -58,16 +60,18 @@
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="RecordGeneratorTests.cs" t="Include" />
         <e p="RecordReaderTests.cs" t="Include" />
         <e p="RecordTests.cs" t="Include" />
         <e p="TEST.txt" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="Project" t="Include" />
       <e p="RecordFileGenerator" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="GeneratorSizeType.cs" t="Include" />
         <e p="Interfaces" t="Include">
-          <e p="IPseugeRNG.cs" t="Include" />
+          <e p="IPseudoRNG.cs" t="Include" />
           <e p="IRandomRecordGenerator.cs" t="Include" />
           <e p="IRecordFileGenerator.cs" t="Include" />
         </e>
@@ -79,6 +83,46 @@
         <e p="RandomPlaintextRecordGenerator.cs" t="Include" />
         <e p="RecordFileGenerator.cs" t="Include" />
         <e p="RecordFileGenerator.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="SequentialFileIO" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Enums" t="Include">
+          <e p="FileOperationType.cs" t="Include" />
+          <e p="LetterProperties.cs" t="Include" />
+        </e>
+        <e p="FibbonacciSequenceGenerator.cs" t="Include" />
+        <e p="FileBuffers.cs" t="Include" />
+        <e p="FileNameGenerator" t="Include">
+          <e p="FileExistsChecker.cs" t="Include" />
+          <e p="RandomStringGenerator.cs" t="Include" />
+          <e p="TemporaryFileNameGenerator.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IDistributer.cs" t="Include" />
+          <e p="IFileBuffers.cs" t="Include" />
+          <e p="IFileExistsChecker.cs" t="Include" />
+          <e p="IFileNameGenerator.cs" t="Include" />
+          <e p="INumberSequenceGenerator.cs" t="Include" />
+          <e p="IRandomStringGenerator.cs" t="Include" />
+          <e p="ISequentialFile.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SequentialFile.cs" t="Include" />
+        <e p="SequentialFileIO.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="SequentialFileIO_Test" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="FibonacciSequenceGeneratorTest.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SequentialFileIO_Test.csproj" t="IncludeRecursive" />
+        <e p="TemporaryFileNameGeneratorTests.cs" t="Include" />
       </e>
       <e p="SequentialFileSorting" t="IncludeRecursive">
         <e p="App.config" t="Include" />
@@ -96,6 +140,7 @@
         <e p="SequentialFileSorting.csproj" t="IncludeRecursive" />
       </e>
       <e p="SequentialFileSorting.sln" t="IncludeFlat" />
+      <e p="Tests" t="Include" />
     </e>
   </component>
 </project>

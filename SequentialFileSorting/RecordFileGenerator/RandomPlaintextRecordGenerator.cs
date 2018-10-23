@@ -12,7 +12,7 @@ namespace RecordFileGenerator
 
         public RandomPlaintextRecordGenerator(IPseudoRNG randomizer = null, int? seed = null)
         {
-            Randomizer = randomizer ?? new PseudoRNG(seed ?? DateTime.Now.Millisecond);
+            Randomizer = randomizer ?? new PseudoRNG(seed ?? (int)DateTime.Now.Ticks);
         }
         
         public IRecord GenerateRandomRecord()
