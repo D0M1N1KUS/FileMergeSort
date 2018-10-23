@@ -11,5 +11,6 @@ namespace SequentialFileIO
         void AddBuffer(string filePath, bool createNewFile = true,
             FileOperationType operationType = FileOperationType.Input);
         void CreateNewBuffers(int numberOfBuffers);
+        int BlockSize { get; set; }
     }
 }

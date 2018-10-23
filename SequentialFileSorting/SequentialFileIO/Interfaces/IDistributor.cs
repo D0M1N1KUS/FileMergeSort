@@ -1,6 +1,6 @@
 namespace SequentialFileIO
 {
-    public interface IDistributer
+    public interface IDistributor
     {
         void Distribute();
     }

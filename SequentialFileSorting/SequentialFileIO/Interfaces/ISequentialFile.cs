@@ -8,5 +8,6 @@ namespace SequentialFileIO
         string FilePath { get; }
         int Sequences { get; set; }
         FileOperationType FileOperationType { get; set; }
+        bool EndOfFileReached { get; set; }
     }
 }

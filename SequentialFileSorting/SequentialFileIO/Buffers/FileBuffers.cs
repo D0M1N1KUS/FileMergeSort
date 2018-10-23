@@ -18,6 +18,7 @@ namespace SequentialFileIO
         public Dictionary<string, IRecordAppender> OutputBuffer { get; private set; }
 
         public IFileNameGenerator FileNameGenerator;
+        public int BlockSize { get; set; } = DEFAULT_BLOCK_SIZE;
         
         private Dictionary<string, SequentialFile> bufferFiles;
 
@@ -26,7 +27,7 @@ namespace SequentialFileIO
             FileNameGenerator = fileNameGenerator ?? new TemporaryFileNameGenerator("Buffer");
             initializeDictionaries();
 
-            AddBuffer(sourceFile);
+            AddBuffer(sourceFile, false, FileOperationType.Output);
             for (var i = 0; i < numberOfBuffers; i++)
             {
                 AddBuffer(FileNameGenerator.GetNextAvailableName());
@@ -51,14 +52,14 @@ namespace SequentialFileIO
         {
             var fileReader = new FileReaderBuilder()
                 .SetFilePath(filePath)
-                .SetBlockSize(DEFAULT_BLOCK_SIZE)
+                .SetBlockSize(BlockSize)
                 .Build();
             InputBuffer.Add(filePath, new LineBasedRecordReader(fileReader, new ValueComponentsSplitter()));
             
             var fileWriter = new FileWriterBuilder()
                 .SetFilePath(filePath)
                 .CreateNewFile(createNewFile)
-                .SetBlockSize(DEFAULT_BLOCK_SIZE)
+                .SetBlockSize(BlockSize)
                 .Build();
             IRecordAppender writer = new RecordAppender(fileWriter);
             
