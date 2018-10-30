@@ -10,5 +10,7 @@ namespace FileIO.RecordIO.Interfaces
         bool IsDummy { get; }
         string[] ValueComponentsArray { get; }
         string ValueComponentsString(string separator);
+        bool Equals(object obj);
+        int CompareTo(IRecord other);
     }
 }

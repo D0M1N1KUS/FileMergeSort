@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferIOTests.cs" />
+    <Compile Include="DynamicDistributionTests.cs" />
     <Compile Include="FibonacciSequenceGeneratorTest.cs" />
+    <Compile Include="OutputBufferTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemporaryFileNameGeneratorTests.cs" />
   </ItemGroup>
@@ -73,6 +75,10 @@
     <ProjectReference Include="..\SequentialFileIO\SequentialFileIO.csproj">
       <Project>{85dc1734-817e-4e65-ab3f-3fad6be16ad3}</Project>
       <Name>SequentialFileIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SequentialFileSorting\SequentialFileSorting.csproj">
+      <Project>{0066c38e-7ee7-4d4f-862d-bbcf6b8a7e73}</Project>
+      <Name>SequentialFileSorting</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

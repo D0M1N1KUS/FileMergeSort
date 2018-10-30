@@ -10,7 +10,7 @@ using SequentialFileIO.Enums;
 
 namespace SequentialFileIO
 {
-    public class FileBufferIo : IFileBufferIO
+    public class FileBufferIO : IFileBufferIO
     {
         private IOutputBuffer[] outputBuffers;
         private IInputBuffer[] inputBuffers;
@@ -18,8 +18,9 @@ namespace SequentialFileIO
         public int InputBufferIndex { get; set; }
         
         private int capacity;
+        private int selectedBuffer = 0;
 
-        public FileBufferIo(int capacity, IInputBuffer sourceInputBuffer, IOutputBuffer sourceOutputBuffer,
+        public FileBufferIO(int capacity, IInputBuffer sourceInputBuffer, IOutputBuffer sourceOutputBuffer,
             IInputBuffer[] temporaryInputBuffers, IOutputBuffer[] temporaryOutputBuffers)
         {
             this.capacity = capacity;
@@ -46,12 +47,32 @@ namespace SequentialFileIO
                 : inputBuffers[InputBufferIndex].RemoveDummyRecord();
         }
 
-        public void AppendToOutputBuffer(int index, IRecord record)
+        public bool InputBufferHasNext()
         {
-            outputBuffers[index].AppendRecord(record);
+            return inputBuffers[InputBufferIndex].HasNext();
+        }
+
+        public void AppendToOutputBuffer(int bufferNumber, IRecord record)
+        {
+            outputBuffers[bufferNumber].AppendRecord(record);
+        }
+
+        public void AppendToOutputBuffer(IRecord record)
+        {
+            this[selectedBuffer].AppendRecord(record);
+        }
+
+        public void SwitchToNextOutputBuffer()
+        {
+            selectedBuffer = (selectedBuffer + 1) % capacity - 1;
         }
 
         public IOutputBuffer this[int i] => 
-            i <= InputBufferIndex ? outputBuffers[i + 1] : outputBuffers[i];
+            i >= InputBufferIndex ? outputBuffers[i + 1] : outputBuffers[i];
+        
+        public IOutputBuffer GetOutputBuffer(int bufferNumber)
+        {
+            return this[bufferNumber];
+        }
     }
 }

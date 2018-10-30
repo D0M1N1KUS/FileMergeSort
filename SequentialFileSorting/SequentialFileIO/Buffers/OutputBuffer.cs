@@ -12,7 +12,8 @@ namespace SequentialFileIO
         public int Series { get; private set; } = 0;
         public int DummyRecords { get; private set; } = 0;
         public IRecord LastAppendedRecord { get; private set; } = Record.Min;
-        
+
+        private bool firstRecordHasBeenAppended => Series == 0 && LastAppendedRecord.Equals(Record.Min);
         
         public void AppendRecord(IRecord record)
         {
@@ -40,6 +41,7 @@ namespace SequentialFileIO
         public void AddDummyRecord(int amount = 1)
         {
             DummyRecords += amount;
+            Series += amount;
         }
 
         public IRecord RemoveDummyRecord()
@@ -47,9 +49,10 @@ namespace SequentialFileIO
             if (HasDummy())
             {
                 DummyRecords--;
+                Series--;
                 return new Record(new double[0], isDummy: true);
             }
-            throw new Exception("No more dummy records left!");
+            throw new Exception("End of buffer reached!");
         }
 
         public bool HasDummy()
@@ -59,7 +62,7 @@ namespace SequentialFileIO
 
         private void checkForEndOfSeries(IRecord currentRecord)
         {
-            if (currentRecord.Value < LastAppendedRecord.Value)
+            if (currentRecord.Value < LastAppendedRecord.Value || firstRecordHasBeenAppended)
                 Series++;
         }
     }

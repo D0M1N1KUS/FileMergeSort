@@ -38,7 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buffers\FileBufferIo.cs" />
+    <Compile Include="Buffers\FileBufferIO.cs" />
     <Compile Include="Buffers\InputBuffer.cs" />
     <Compile Include="Buffers\OutputBuffer.cs" />
     <Compile Include="Enums\FileOperationType.cs" />

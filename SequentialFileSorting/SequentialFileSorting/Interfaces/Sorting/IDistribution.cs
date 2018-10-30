@@ -3,7 +3,7 @@ using FileIO.Interfaces;
 
 namespace SequentialFileIO
 {
-    public interface IDistributor
+    public interface IDistribution
     {
         void Distribute();
     }

@@ -8,8 +8,12 @@ namespace SequentialFileIO
     public interface IFileBufferIO
     {
         IRecord GetNextFromCurrentInputBuffer();
-        void AppendToOutputBuffer(int index, IRecord record);
+        bool InputBufferHasNext();
+        void AppendToOutputBuffer(int bufferNumber, IRecord record);
+        void AppendToOutputBuffer(IRecord record);
+        void SwitchToNextOutputBuffer();
         IOutputBuffer this[int i] { get; }
+        IOutputBuffer GetOutputBuffer(int bufferNumber);
         int InputBufferIndex { get; set; }
     }
 }
