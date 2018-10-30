@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FileIO.Interfaces;
 using FileIO.RecordIO.Interfaces;
 using SequentialFileIO.Enums;
 
@@ -6,11 +7,12 @@ namespace SequentialFileIO
 {
     public interface IFileBuffers
     {
-        Dictionary<string, IRecordReader> InputBuffer { get; }
-        Dictionary<string, IRecordAppender> OutputBuffer { get; }
+        int NumberOfOutputBuffers { get; }
         void AddBuffer(string filePath, bool createNewFile = true,
             FileOperationType operationType = FileOperationType.Input);
         void CreateNewBuffers(int numberOfBuffers);
-        int BlockSize { get; set; }
+        IRecordAppender GetOutputBuffer(int index);
+        IRecordReader GetInputBuffer();
+        IRecordAppender[] GetOutputBuffers();
     }
 }
