@@ -10,124 +10,48 @@ using SequentialFileIO.Enums;
 
 namespace SequentialFileIO
 {
-    public class FileBuffers : IFileBuffers
+    public class FileBufferIo : IFileBufferIO
     {
-        private const int DEFAULT_BLOCK_SIZE = 8;
-        private int bufferIndex;
-        
-        public int NumberOfOutputBuffers { get; private set; }
-        
-        public Dictionary<int, IRecordReader> InputBuffer { get; private set; }
-        public Dictionary<int, IRecordAppender> OutputBuffer { get; private set; }
+        private IOutputBuffer[] outputBuffers;
+        private IInputBuffer[] inputBuffers;
 
-        public IFileNameGenerator FileNameGenerator;
-        public int BlockSize = DEFAULT_BLOCK_SIZE;
+        public int InputBufferIndex { get; set; }
         
-        private Dictionary<int, ISequentialFile> bufferFiles;
+        private int capacity;
 
-        
-        public FileBuffers(string sourceFile = null, int numberOfOutputBuffers = 0, IFileNameGenerator fileNameGenerator = null)
+        public FileBufferIo(int capacity, IInputBuffer sourceInputBuffer, IOutputBuffer sourceOutputBuffer,
+            IInputBuffer[] temporaryInputBuffers, IOutputBuffer[] temporaryOutputBuffers)
         {
-            FileNameGenerator = fileNameGenerator ?? new TemporaryFileNameGenerator("IOBuffer");
-            initializeDictionaries();
-
-            AddBuffer(sourceFile, false, FileOperationType.Output);
-            for (var i = 0; i < numberOfOutputBuffers; i++)
+            this.capacity = capacity;
+            outputBuffers = new IOutputBuffer[capacity];
+            inputBuffers = new IInputBuffer[capacity];
+            if (sourceInputBuffer != null && sourceInputBuffer != null)
             {
-                AddBuffer(FileNameGenerator.GetNextAvailableName());
+                outputBuffers[0] = sourceOutputBuffer;
+                inputBuffers[0] = sourceInputBuffer;
+                InputBufferIndex = 0;
             }
 
-            bufferIndex = 0;
-            NumberOfOutputBuffers = numberOfOutputBuffers;
-        }
-
-        
-        public FileBuffers(string sourceFile = null, int numberOfOutputBuffers = 0, string locationOfBufferFiles = null)
-        {
-            initializeDictionaries();   
-        }
-        
-        private void initializeDictionaries()
-        {
-            bufferFiles = new Dictionary<int, ISequentialFile>();
-            InputBuffer = new Dictionary<int, IRecordReader>();
-            OutputBuffer = new Dictionary<int, IRecordAppender>();
-        }
-        
-        
-        public void AddBuffer(string filePath, bool createNewFile = true, 
-            FileOperationType operationType = FileOperationType.Input)
-        {
-            createNewReader(filePath);
-            createNewWriter(filePath, createNewFile);
-            bufferFiles.Add(bufferIndex, new SequentialFile(filePath, bufferIndex, operationType));
-            bufferIndex++;
-            NumberOfOutputBuffers++;
-        }
-
-        private void createNewWriter(string filePath, bool createNewFile)
-        {
-            var fileWriter = new FileWriterBuilder()
-                .SetFilePath(filePath)
-                .CreateNewFile(createNewFile)
-                .SetBlockSize(BlockSize)
-                .Build();
-            IRecordAppender writer = new RecordAppender(fileWriter);
-            OutputBuffer.Add(bufferIndex, writer);
-        }
-
-        private void createNewReader(string filePath)
-        {
-            var fileReader = new FileReaderBuilder()
-                .SetFilePath(filePath)
-                .SetBlockSize(BlockSize)
-                .Build();
-            InputBuffer.Add(bufferIndex, new LineBasedRecordReader(fileReader, new ValueComponentsSplitter()));
-        }
-
-        public void CreateNewBuffers(int numberOfBuffers)
-        {
-            for (var i = 0; i < numberOfBuffers; i++)
+            for (var i = 1; i < capacity; i++)
             {
-                AddBuffer(FileNameGenerator.GetNextAvailableName());
+                outputBuffers[i] = temporaryOutputBuffers[i - 1];
+                inputBuffers[i] = temporaryInputBuffers[i - 1];
             }
-
-            NumberOfOutputBuffers += numberOfBuffers;
         }
-
-        public IRecordAppender GetOutputBuffer(int index)
+        
+        public IRecord GetNextFromCurrentInputBuffer()
         {
-            if (!OutputBuffer.ContainsKey(index))
-                throw new Exception("FileBuffers->CreateNewBuffers: Buffer with index [" + index +
-                                    "] does not exist!");
-            if(bufferFiles[index].FileOperationType != FileOperationType.Output)
-                throw new Exception("FileBuffers->CreateNewBuffers: Buffer with index [" + index + 
-                                    "] is currently not an output buffer!");
-            return OutputBuffer[index];
+            return inputBuffers[InputBufferIndex].HasNext()
+                ? inputBuffers[InputBufferIndex].GetNextRecord()
+                : inputBuffers[InputBufferIndex].RemoveDummyRecord();
         }
 
-        public IRecordReader GetInputBuffer()
+        public void AppendToOutputBuffer(int index, IRecord record)
         {
-            foreach (var buffer in bufferFiles)
-            {
-                if (buffer.Value.FileOperationType == FileOperationType.Input && InputBuffer.ContainsKey(buffer.Key))
-                    return InputBuffer[buffer.Key];
-            }
-            
-            throw new Exception("FileBuffers->GetInputBuffer: Unable to find input buffer!");
+            outputBuffers[index].AppendRecord(record);
         }
 
-        public IRecordAppender[] GetOutputBuffers()
-        {
-            var outputBuffers = new IRecordAppender[NumberOfOutputBuffers];
-            var i = 0;
-            foreach (var buffer in OutputBuffer)
-            {
-                if (bufferFiles[buffer.Key].FileOperationType == FileOperationType.Output)
-                    outputBuffers[i++] = buffer.Value;
-            }
-
-            return outputBuffers;
-        }
+        public IOutputBuffer this[int i] => 
+            i <= InputBufferIndex ? outputBuffers[i + 1] : outputBuffers[i];
     }
 }

@@ -5,14 +5,11 @@ using SequentialFileIO.Enums;
 
 namespace SequentialFileIO
 {
-    public interface IFileBuffers
+    public interface IFileBufferIO
     {
-        int NumberOfOutputBuffers { get; }
-        void AddBuffer(string filePath, bool createNewFile = true,
-            FileOperationType operationType = FileOperationType.Input);
-        void CreateNewBuffers(int numberOfBuffers);
-        IRecordAppender GetOutputBuffer(int index);
-        IRecordReader GetInputBuffer();
-        IRecordAppender[] GetOutputBuffers();
+        IRecord GetNextFromCurrentInputBuffer();
+        void AppendToOutputBuffer(int index, IRecord record);
+        IOutputBuffer this[int i] { get; }
+        int InputBufferIndex { get; set; }
     }
 }

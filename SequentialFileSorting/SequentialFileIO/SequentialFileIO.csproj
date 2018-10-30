@@ -38,20 +38,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buffers\FileBuffers.cs" />
-    <Compile Include="Buffers\SequentialFile.cs" />
+    <Compile Include="Buffers\FileBufferIo.cs" />
+    <Compile Include="Buffers\InputBuffer.cs" />
+    <Compile Include="Buffers\OutputBuffer.cs" />
     <Compile Include="Enums\FileOperationType.cs" />
     <Compile Include="Enums\LetterProperties.cs" />
     <Compile Include="FibbonacciSequenceGenerator.cs" />
     <Compile Include="FileNameGenerator\FileExistsChecker.cs" />
     <Compile Include="FileNameGenerator\RandomStringGenerator.cs" />
     <Compile Include="FileNameGenerator\TemporaryFileNameGenerator.cs" />
-    <Compile Include="Interfaces\IDistributor.cs" />
-    <Compile Include="Interfaces\IFileBuffers.cs" />
+    <Compile Include="Interfaces\IDummyRecords.cs" />
+    <Compile Include="Interfaces\IFileBufferIO.cs" />
     <Compile Include="Interfaces\IFileExistsChecker.cs" />
+    <Compile Include="Interfaces\IInputBuffer.cs" />
     <Compile Include="Interfaces\INumberSequenceGenerator.cs" />
+    <Compile Include="Interfaces\IOutputBuffer.cs" />
     <Compile Include="Interfaces\IRandomStringGenerator.cs" />
-    <Compile Include="Interfaces\ISequentialFile.cs" />
     <Compile Include="Interfaces\IFileNameGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -22,23 +22,25 @@ namespace FileIO.RecordIO
                 return largest;
             }
         }
-
         public int Length => valueComponents.Length;
-
+        IRecord IRecord.Min => Min;
+        public bool IsDummy { get; private set; }
         public string[] ValueComponentsArray => valueComponents.Select(value => value.ToString()).ToArray();
 
+        public static IRecord Min => new Record(new double[0]);
         private double[] valueComponents;
 
-        public Record(double[] valueComponents)
+        public Record(double[] valueComponents, bool isDummy = false)
         {
             if (valueComponents.Length > 15)
                 throw new Exception("Record creation error: A record can contain a maximum of 15 values. Number of values passed: " +
                                     valueComponents.Length);
                 
             this.valueComponents = valueComponents;
+            IsDummy = isDummy;
         }
 
-        public Record(string[] valueComponents)
+        public Record(string[] valueComponents, bool isDummy = false)
         {
             if (valueComponents.Length > 15)
                 throw new Exception("A record can contain a maximum of 15 values. Number of values passed: " +
@@ -54,6 +56,7 @@ namespace FileIO.RecordIO
             }
 
             this.valueComponents = parsedValueComponents;
+            IsDummy = isDummy;
         }
         
         public string ValueComponentsString(string separator)
