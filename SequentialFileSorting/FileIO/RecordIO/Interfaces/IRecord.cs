@@ -6,7 +6,11 @@ namespace FileIO.RecordIO.Interfaces
     {
         double Value { get; }
         int Length { get; }
+        IRecord Min { get; }
+        bool IsDummy { get; }
         string[] ValueComponentsArray { get; }
         string ValueComponentsString(string separator);
+        bool Equals(object obj);
+        int CompareTo(IRecord other);
     }
 }

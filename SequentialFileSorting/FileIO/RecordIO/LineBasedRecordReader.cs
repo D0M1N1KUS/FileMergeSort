@@ -35,7 +35,10 @@ namespace FileIO.RecordIO
             var line = FileReader.GetNextLine();
             return new Record(ValueComponentsSplitter.GetValues(line));
         }
-        
-        
+
+        public bool HasNext()
+        {
+            return !FileReader.EndOfFile;
+        }
     }
 }

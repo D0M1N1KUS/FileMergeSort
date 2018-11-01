@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5609a305-700e-4ffb-8e3f-f341c2e49808" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/SequentialFileIO_Test/DynamicDistributionTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SequentialFileIO_Test/OutputBufferTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SequentialFileSorting/DistributionIterator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SequentialFileSorting/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SequentialFileSorting/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SequentialFileIO/FileBuffers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBuffers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDistributer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDistributor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SequentialFileIO/SequentialFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Buffers/SequentialFile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SequentialFileSorting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SequentialFileSorting/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecord.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecord.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileIO/Buffers/OutputBuffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Buffers/OutputBuffer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBufferIO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBufferIO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SequentialFileIO/SequentialFileIO.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO/SequentialFileIO.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileIO_Test/BufferIOTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO_Test/BufferIOTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileIO_Test/SequentialFileIO_Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileIO_Test/SequentialFileIO_Test.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileSorting/Interfaces/Sorting/IDistributor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileSorting/Interfaces/Sorting/IDistribution.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileSorting/SequentialFileSorting.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileSorting/SequentialFileSorting.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileSorting/Sorting/DynamicDistribution.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileSorting/Sorting/DynamicDistribution.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileSorting/obj/Debug/App.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileSorting/obj/Debug/App.g.i.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileSorting/obj/Debug/MainWindow.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileSorting/obj/Debug/MainWindow.g.i.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SequentialFileSorting/obj/Debug/SequentialFileSorting.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SequentialFileSorting/obj/Debug/SequentialFileSorting.csproj.FileListAbsolute.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,18 +45,18 @@
     <session id="-1072897963">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.6" value="4" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.open.time.6" value="5" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="195" />
+          <entry key="cs" value="276" />
           <entry key="log" value="1" />
           <entry key="txt" value="1" />
           <entry key="xaml" value="2" />
@@ -53,21 +64,21 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="195" />
+          <entry key="C#" value="276" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="XAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="26833" />
+          <entry key="cs" value="37072" />
           <entry key="txt" value="40" />
           <entry key="xaml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="26833" />
+          <entry key="C#" value="37072" />
           <entry key="PLAIN_TEXT" value="40" />
           <entry key="XAML" value="7" />
         </counts>
@@ -75,54 +86,91 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.49840087">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/FileBuffers.cs">
+            <entry file="file://$PROJECT_DIR$/SequentialFileSorting/Sorting/DynamicDistribution.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+                <state relative-caret-position="270">
+                  <caret line="22" column="71" lean-forward="true" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
                   <folding>
-                    <marker date="1540320029473" expanded="false" signature="6:218" ph="..." />
-                    <marker date="1540320029473" expanded="true" signature="246:2746" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="292:2744" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="842:1215" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="1108:1205" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="1331:1392" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="1447:1672" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="1836:2508" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="2567:2738" ph="{...}" />
-                    <marker date="1540320029473" expanded="true" signature="2631:2728" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffers.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-                  <folding>
-                    <marker date="1540320058442" expanded="false" signature="6:97" ph="..." />
-                    <marker date="1540320058442" expanded="true" signature="125:531" ph="{...}" />
-                    <marker date="1540320058442" expanded="true" signature="161:529" ph="{...}" />
+                    <marker date="1540937384070" expanded="false" signature="6:132" ph="..." />
+                    <marker date="1540937384070" expanded="true" signature="173:3488" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="180:402" ph="/// This class' task is to distribute sequences found in the source file without knowing how many sequences there ... " />
+                    <marker date="1540937384070" expanded="true" signature="455:3486" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="992:1329" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="1363:2084" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="1692:2074" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="1848:2030" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="2161:2582" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="2244:2572" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="2456:2558" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="2625:2799" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="2863:3177" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="3222:3480" ph="{...}" />
+                    <marker date="1540937384070" expanded="true" signature="3334:3426" ph="{...}" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/SequentialFile.cs">
+            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIO.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+                <state relative-caret-position="990">
+                  <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
                   <folding>
-                    <marker date="1540320256352" expanded="false" signature="6:63" ph="..." />
-                    <marker date="1540320256352" expanded="true" signature="91:643" ph="{...}" />
-                    <marker date="1540320256352" expanded="true" signature="144:641" ph="{...}" />
-                    <marker date="1540320256352" expanded="true" signature="453:635" ph="{...}" />
+                    <marker date="1540936862412" expanded="false" signature="6:218" ph="..." />
+                    <marker date="1540936862412" expanded="true" signature="246:2432" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="294:2430" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="721:1343" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="953:1127" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="1175:1333" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="1407:1622" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="1664:1745" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="1821:1903" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="1961:2036" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="2084:2170" ph="{...}" />
+                    <marker date="1540936862412" expanded="true" signature="2365:2424" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/BufferIOTests.cs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="555">
+                  <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+                  <folding>
+                    <marker date="1540909703048" expanded="false" signature="6:141" ph="..." />
+                    <marker date="1540909703048" expanded="true" signature="174:1797" ph="{...}" />
+                    <marker date="1540909703048" expanded="true" signature="225:1795" ph="{...}" />
+                    <marker date="1540909703048" expanded="true" signature="308:1789" ph="{...}" />
+                    <marker date="1540909703048" expanded="true" signature="1052:1431" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/OutputBuffer.cs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+                  <folding>
+                    <marker date="1540936228167" expanded="false" signature="6:95" ph="..." />
+                    <marker date="1540936228167" expanded="true" signature="123:1982" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="171:1980" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="573:718" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="779:979" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="1040:1240" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="1292:1378" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="1422:1680" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="1460:1611" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="1712:1769" ph="{...}" />
+                    <marker date="1540936228167" expanded="true" signature="1834:1974" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -131,16 +179,54 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs">
+            <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/DynamicDistributionTests.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+                <state relative-caret-position="622">
+                  <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
                   <folding>
-                    <marker date="1540320065952" expanded="false" signature="6:71" ph="..." />
-                    <marker date="1540320065952" expanded="true" signature="99:323" ph="{...}" />
-                    <marker date="1540320065952" expanded="true" signature="138:321" ph="{...}" />
+                    <marker date="1540937391090" expanded="true" signature="6:136" ph="..." />
+                    <marker date="1540937391090" expanded="true" signature="169:2455" ph="{...}" />
+                    <marker date="1540937391090" expanded="true" signature="231:2453" ph="{...}" />
+                    <marker date="1540937391090" expanded="true" signature="433:1729" ph="{...}" />
+                    <marker date="1540937391090" expanded="true" signature="754:1013" ph="{...}" />
+                    <marker date="1540937391090" expanded="true" signature="1784:2242" ph="{...}" />
+                    <marker date="1540937391090" expanded="true" signature="2307:2447" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBufferIO.cs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+                  <folding>
+                    <marker date="1540936810809" expanded="false" signature="6:122" ph="..." />
+                    <marker date="1540936810809" expanded="true" signature="150:589" ph="{...}" />
+                    <marker date="1540936810809" expanded="true" signature="187:587" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/OutputBufferTests.cs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                  <folding>
+                    <marker date="1540935670525" expanded="true" signature="6:147" ph="..." />
+                    <marker date="1540935670525" expanded="true" signature="180:2498" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="235:2496" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="371:1126" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="434:770" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="912:991" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="1206:1459" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="1554:1854" ph="{...}" />
+                    <marker date="1540935670525" expanded="true" signature="1979:2490" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -167,20 +253,24 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497E7C03-5433-4AE6-B257-9B219192BCF0/bd/68b71314/WorkItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/FileBuffers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO_Tests/RecordTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IDistributor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileSorting/Interfaces/Sorting/IDistribution.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecord.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/SequentialFile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/RecordIO/Record.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBufferIO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Builders/FileIOBuilderBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO_Test/FibonacciSequenceGeneratorTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileSorting/Sorting/DynamicDistribution.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Builders/FileWriterBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/Enums/LetterProperties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/FileNameGenerator/RandomStringGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497E7C03-5433-4AE6-B257-9B219192BCF0/c8/cd383ab3/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO_Test/OutputBufferTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IRandomStringGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497E7C03-5433-4AE6-B257-9B219192BCF0/5d/535ca58c/Test.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/FileNameGenerator/TemporaryFileNameGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileNameGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -193,13 +283,23 @@
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/PseudoRNG.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/Interfaces/IPseudoRNG.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/RandomPlaintextRecordGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/Interfaces/IRandomRecordGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/RecordFileGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/GeneratorSizeType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecordFileGenerator/Interfaces/IRecordFileGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO_Test/DynamicDistributionTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileSorting/DistributionIterator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IDummyRecords.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO_Test/BufferIOTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/OutputBuffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO_Tests/FileReaderTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/InputBuffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Readers/FileReader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IOutputBuffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Readers/Interfaces/IFileReader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IInputBuffer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO_Test/TemporaryFileNameGeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileSorting/MainWindow.xaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileSorting/MainWindow.xaml.cs" root0="FORCE_HIGHLIGHTING" />
@@ -209,9 +309,9 @@
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/FibbonacciSequenceGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/Enums/FileOperationType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/RecordIO/ValueComponentsSplitter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Readers/BlockReader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IValueComponentsSplitter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO_Tests/RecordReaderTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Builders/FileReaderBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Readers/Interfaces/IFileIOBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -222,6 +322,7 @@
     <setting file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileExistsChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/Readers/NewlineSeparator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497E7C03-5433-4AE6-B257-9B219192BCF0/b6/71f27b08/TestWorker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497E7C03-5433-4AE6-B257-9B219192BCF0/9f/609d91ba/CompositeWorkItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/RecordIO/RecordAppender.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecordAppender.cs" root0="FORCE_HIGHLIGHTING" />
@@ -230,28 +331,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/RecordFileGenerator/RecordGenerator.cs" />
-        <option value="$PROJECT_DIR$/RecordFileGenerator/Interfaces/IRecordFileGenerator.cs" />
-        <option value="$PROJECT_DIR$/RecordFileGenerator/RecordFileGenerator.cs" />
-        <option value="$PROJECT_DIR$/RecordFileGenerator/Interfaces/IPseugeRNG.cs" />
-        <option value="$PROJECT_DIR$/FileIO/Writers/Interfaces/IFileWriter.cs" />
-        <option value="$PROJECT_DIR$/FileIO/Writers/FileWriter.cs" />
-        <option value="$PROJECT_DIR$/FileIO/RecordIO/Record.cs" />
-        <option value="$PROJECT_DIR$/FileIO_Tests/RecordTests.cs" />
-        <option value="$PROJECT_DIR$/FileIO/RecordIO/RecordAppender.cs" />
-        <option value="$PROJECT_DIR$/RecordFileGenerator/Interfaces/IRandomRecordGenerator.cs" />
-        <option value="$PROJECT_DIR$/FileIO_Tests/RecordGeneratorTests.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO/Class1.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO_Tests/Class1.cs" />
-        <option value="$PROJECT_DIR$/FileIO_Tests/RecordReaderTests.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO/ISequentialFile.cs" />
-        <option value="$PROJECT_DIR$/FileIO/Readers/Interfaces/IFileIOBase.cs" />
-        <option value="$PROJECT_DIR$/FileIO/Writers/BlockWriter.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequenceGenerator.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO_Test/Tests.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/INumberSequenceGenerator.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO/FibbonacciSequenceGenerator.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO_Test/FibonacciSequenceGeneratorTest.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/SequentialFile.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDistributer.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/Enums/SequentialFileType.cs" />
@@ -263,7 +342,6 @@
         <option value="$PROJECT_DIR$/SequentialFileIO/FileNameGenerator/RanddomStringGenerator.cs" />
         <option value="$PROJECT_DIR$/RecordFileGenerator/Interfaces/IPseudoRNG.cs" />
         <option value="$PROJECT_DIR$/RecordFileGenerator/PseudoRNG.cs" />
-        <option value="$PROJECT_DIR$/FileIO/RecordIO/LineBasedRecordReader.cs" />
         <option value="$PROJECT_DIR$/FileIO/Builders/FileIOBuilderBase.cs" />
         <option value="$PROJECT_DIR$/FileIO/Builders/FileReaderBuilder.cs" />
         <option value="$PROJECT_DIR$/FileIO/Builders/FileWriterBuilder.cs" />
@@ -277,10 +355,33 @@
         <option value="$PROJECT_DIR$/SequentialFileIO_Test/TemporaryFileNameGeneratorTests.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/FileNameGenerator/RandomStringGenerator.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDistributor.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileSorting/Sorting/Distribution.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs" />
-        <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBuffers.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffers.cs" />
+        <option value="$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecordReader.cs" />
+        <option value="$PROJECT_DIR$/FileIO/RecordIO/LineBasedRecordReader.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBuffers.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffer.cs" />
         <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/SequentialFile.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/BufferAccess.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDontCard.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDontCare.cs" />
+        <option value="$PROJECT_DIR$/FileIO/RecordIO/Record.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IOutputBuffer.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IInputBuffer.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IDummyRecords.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/InputBuffer.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIo.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileSorting/Interfaces/Sorting/IDistribution.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO_Test/BufferIOTests.cs" />
+        <option value="$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecord.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileSorting/DistributionIterator.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO_Test/OutputBufferTests.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/OutputBuffer.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBufferIO.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIO.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileIO_Test/DynamicDistributionTests.cs" />
+        <option value="$PROJECT_DIR$/SequentialFileSorting/Sorting/DynamicDistribution.cs" />
       </list>
     </option>
   </component>
@@ -291,7 +392,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
@@ -320,6 +421,26 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="FileIO" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="FileIO" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Readers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="FileIO" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="RecordIO" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
               <item name="SequentialFileIO" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
@@ -327,12 +448,46 @@
               <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
               <item name="SequentialFileIO" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Buffers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Interfaces" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Interfaces" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Sorting" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Project" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Sorting" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Tests" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="SequentialFileSorting" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Tests" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="SequentialFileIO_Test" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -345,7 +500,7 @@
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="DateTime.Now&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="IO&#9;FILE&#9;file://D:/visual studio 2015/Projects/CollageProjects/Struktury Baz Danych/Projekt1 - Sortowanie plików sekwencyjnych 2018/SequentialFileSorting/SequentialFileIO/Buffers/FileBufferIO.cs&#10;Fil&#9;FILE&#9;file://D:/visual studio 2015/Projects/CollageProjects/Struktury Baz Danych/Projekt1 - Sortowanie plików sekwencyjnych 2018/SequentialFileSorting/SequentialFileIO/Buffers/FileBufferIO.cs&#10;REc&#9;FILE&#9;file://D:/visual studio 2015/Projects/CollageProjects/Struktury Baz Danych/Projekt1 - Sortowanie plików sekwencyjnych 2018/SequentialFileSorting/FileIO/RecordIO/Record.cs&#10;BufferIO&#9;FILE&#9;file://D:/visual studio 2015/Projects/CollageProjects/Struktury Baz Danych/Projekt1 - Sortowanie plików sekwencyjnych 2018/SequentialFileSorting/SequentialFileIO/Buffers/FileBufferIO.cs&#10;IRe&#9;FILE&#9;file://D:/visual studio 2015/Projects/CollageProjects/Struktury Baz Danych/Projekt1 - Sortowanie plików sekwencyjnych 2018/SequentialFileSorting/FileIO/RecordIO/Interfaces/IRecord.cs&#10;Rec&#9;FILE&#9;file://D:/visual studio 2015/Projects/CollageProjects/Struktury Baz Danych/Projekt1 - Sortowanie plików sekwencyjnych 2018/SequentialFileSorting/FileIO/RecordIO/Record.cs&#10;Record&#9;null&#9;null&#10;DateTime.Now&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -400,12 +555,16 @@
       <workItem from="1540202395156" duration="14742000" />
       <workItem from="1540236965570" duration="13463000" />
       <workItem from="1540288813348" duration="14159000" />
-      <workItem from="1540308978525" duration="7819000" />
+      <workItem from="1540308978525" duration="15222000" />
+      <workItem from="1540414558494" duration="599000" />
+      <workItem from="1540539566943" duration="7406000" />
+      <workItem from="1540572323370" duration="8098000" />
+      <workItem from="1540907485986" duration="25202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73742000" />
+    <option name="totallyTimeSpent" value="122450000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -417,7 +576,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -431,14 +590,14 @@
       <window_info anchor="bottom" id="Terminal" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="8" />
-      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info active="true" anchor="bottom" id="Find" order="9" visible="true" weight="0.32939914" />
       <window_info anchor="bottom" id="Run" order="10" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.39914164" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="14" />
-      <window_info anchor="bottom" x="42" y="252" width="1876" height="328" id="Unit Tests" order="15" visible="true" weight="0.2864807" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="0" visible="true" weight="0.124200426" />
+      <window_info anchor="bottom" x="42" y="252" width="1876" height="328" id="Unit Tests" order="15" weight="0.45064378" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="0" type="SLIDING" weight="0.12686567" />
       <window_info anchor="right" id="Errors In Solution" order="1" weight="0.2260128" />
       <window_info anchor="right" id="Database" order="2" weight="0.32995737" />
       <window_info anchor="right" id="Unit Tests Coverage" order="3" weight="0.32995737" />
@@ -505,99 +664,44 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="RiderUnitTests">
+        <watch expression="optimalDistribution" language="C#" custom="RiderImportsList:" />
+        <watch expression="currentRecord.Value" language="C#" custom="RiderImportsList:" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>currentRecord.Value</expression-string>
+        <language-id>C#</language-id>
+        <custom-info>RiderImportsList:</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>optimalDistribution</expression-string>
+        <language-id>C#</language-id>
+        <custom-info>RiderImportsList:</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="setValue">
+      <expression>
+        <expression-string>1</expression-string>
+        <language-id>C#</language-id>
+        <custom-info>RiderImportsList:</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>0</expression-string>
+        <language-id>C#</language-id>
+        <custom-info>RiderImportsList:</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FileIO/Readers/BlockReader.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.Rider2018.2/system/log/UnitTestLogs/f9cdf8ba-41b6-479a-a54c-ab986b2ed571___2018-10-22-14-24-53-709.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/Readers/Interfaces/ILineSeparator.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IValueComponentsSplitter.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/Readers/NewlineSeparator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RecordFileGenerator/Class1.cs" />
-    <entry file="file://$PROJECT_DIR$/RecordFileGenerator/GeneratorSizeType.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO_Tests/RecordTests.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="48" column="59" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Record.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecordAppender.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecord.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO_Tests/RecordGeneratorTests.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RecordFileGenerator/Interfaces/IRandomRecordGenerator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RecordFileGenerator/Interfaces/IRecordFileGenerator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RecordFileGenerator/RecordFileGenerator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="50" column="66" selection-start-line="50" selection-start-column="66" selection-end-line="50" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FileIO_Tests/RecordReaderTests.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -615,27 +719,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/Tests.cs" />
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/INumberSequenceGenerator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/FibbonacciSequenceGenerator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecordReader.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RecordFileGenerator/RandomPlaintextRecordGenerator.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -685,20 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/LineBasedRecordReader.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/RecordAppender.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileNameGenerator.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -710,13 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileIO/Builders/FileReaderBuilder.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -738,10 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding>
-            <marker date="1540315350073" expanded="true" signature="57:349" ph="{...}" />
-            <marker date="1540315350073" expanded="true" signature="103:347" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -749,18 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="58" column="78" selection-start-line="58" selection-start-column="78" selection-end-line="58" selection-end-column="78" />
-          <folding>
-            <marker date="1540315350081" expanded="false" signature="6:46" ph="..." />
-            <marker date="1540315350081" expanded="true" signature="79:2514" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="147:2512" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="229:620" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="712:1018" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="1105:1408" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="1475:1728" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="1820:2070" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="2126:2506" ph="{...}" />
-            <marker date="1540315350081" expanded="true" signature="2291:2356" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -768,17 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-          <folding>
-            <marker date="1540315350062" expanded="false" signature="6:131" ph="..." />
-            <marker date="1540315350062" expanded="true" signature="159:2815" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="226:2813" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="704:855" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="1222:1788" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="1865:2425" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="1988:2303" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="2494:2620" ph="{...}" />
-            <marker date="1540315350062" expanded="true" signature="2685:2807" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -786,10 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding>
-            <marker date="1540315350048" expanded="true" signature="40:226" ph="{...}" />
-            <marker date="1540315350048" expanded="true" signature="74:224" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,19 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
           <caret line="100" column="77" selection-start-line="100" selection-start-column="77" selection-end-line="100" selection-end-column="77" />
-          <folding>
-            <marker date="1540315350087" expanded="true" signature="6:133" ph="..." />
-            <marker date="1540315350087" expanded="true" signature="166:4231" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="235:4229" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="296:1442" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="1034:1195" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="1237:1344" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="1569:1887" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="1954:2377" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="2444:2867" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="2949:3486" ph="{...}" />
-            <marker date="1540315350087" expanded="true" signature="3570:4223" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,10 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-          <folding>
-            <marker date="1540315350066" expanded="true" signature="26:120" ph="{...}" />
-            <marker date="1540315350066" expanded="true" signature="68:118" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -828,11 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding>
-            <marker date="1540315350058" expanded="true" signature="44:218" ph="{...}" />
-            <marker date="1540315350058" expanded="true" signature="102:216" ph="{...}" />
-            <marker date="1540315350058" expanded="true" signature="152:210" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,40 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
           <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
-          <folding>
-            <marker date="1540315350060" expanded="false" signature="6:127" ph="..." />
-            <marker date="1540315350060" expanded="true" signature="155:2461" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="221:2459" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="656:937" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="992:1106" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="1285:1778" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="1528:1711" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="1851:2336" ph="{...}" />
-            <marker date="1540315350060" expanded="true" signature="2376:2453" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IDistributor.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding>
-            <marker date="1540316914499" expanded="true" signature="26:103" ph="{...}" />
-            <marker date="1540316914499" expanded="true" signature="62:101" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <marker date="1540320065952" expanded="false" signature="6:71" ph="..." />
-            <marker date="1540320065952" expanded="true" signature="99:323" ph="{...}" />
-            <marker date="1540320065952" expanded="true" signature="138:321" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -881,53 +856,350 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding>
-            <marker date="1540315350053" expanded="true" signature="32:112" ph="{...}" />
-            <marker date="1540315350053" expanded="true" signature="68:110" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBuffers.cs">
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/INumberSequenceGenerator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileIO/Readers/Interfaces/IFileReader.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileIO/Builders/FileReaderBuilder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileIO/Readers/BlockReader.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <caret line="13" column="79" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/ISequentialFile.cs" />
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/SequentialFile.cs" />
+    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/RecordAppender.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IDummyRecords.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
           <folding>
-            <marker date="1540320058442" expanded="false" signature="6:97" ph="..." />
-            <marker date="1540320058442" expanded="true" signature="125:531" ph="{...}" />
-            <marker date="1540320058442" expanded="true" signature="161:529" ph="{...}" />
+            <marker date="1540580461760" expanded="true" signature="61:253" ph="{...}" />
+            <marker date="1540580461760" expanded="true" signature="98:251" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/FileBuffers.cs">
+    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecordReader.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding>
+            <marker date="1540328220803" expanded="true" signature="36:144" ph="{...}" />
+            <marker date="1540328220803" expanded="true" signature="73:142" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IInputBuffer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <marker date="1540581274553" expanded="true" signature="61:220" ph="{...}" />
+            <marker date="1540581274553" expanded="true" signature="113:218" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IOutputBuffer.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding>
-            <marker date="1540320029473" expanded="false" signature="6:218" ph="..." />
-            <marker date="1540320029473" expanded="true" signature="246:2746" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="292:2744" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="842:1215" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="1108:1205" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="1331:1392" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="1447:1672" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="1836:2508" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="2567:2738" ph="{...}" />
-            <marker date="1540320029473" expanded="true" signature="2631:2728" ph="{...}" />
+            <marker date="1540580155653" expanded="true" signature="61:351" ph="{...}" />
+            <marker date="1540580155653" expanded="true" signature="114:349" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/SequentialFile.cs">
+    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Record.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state relative-caret-position="458">
+          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
           <folding>
-            <marker date="1540320256352" expanded="false" signature="6:63" ph="..." />
-            <marker date="1540320256352" expanded="true" signature="91:643" ph="{...}" />
-            <marker date="1540320256352" expanded="true" signature="144:641" ph="{...}" />
-            <marker date="1540320256352" expanded="true" signature="453:635" ph="{...}" />
+            <marker date="1540579307299" expanded="false" signature="6:161" ph="..." />
+            <marker date="1540579307299" expanded="true" signature="188:3306" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="225:3304" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="259:564" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="285:554" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="405:507" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="990:1350" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="1421:2189" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="1785:2089" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="2260:2345" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="2390:2807" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="2493:2705" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="2869:2930" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="3000:3061" ph="{...}" />
+            <marker date="1540579307299" expanded="true" signature="3110:3280" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/Interfaces/IRecord.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding>
+            <marker date="1540911412983" expanded="true" signature="51:410" ph="{...}" />
+            <marker date="1540911412983" expanded="true" signature="105:408" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileSorting/DistributionIterator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="55" lean-forward="true" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+          <folding>
+            <marker date="1540921411867" expanded="true" signature="6:83" ph="..." />
+            <marker date="1540921411867" expanded="true" signature="116:857" ph="{...}" />
+            <marker date="1540921411867" expanded="true" signature="170:855" ph="{...}" />
+            <marker date="1540921411867" expanded="true" signature="326:421" ph="{...}" />
+            <marker date="1540921411867" expanded="true" signature="484:588" ph="{...}" />
+            <marker date="1540921411867" expanded="true" signature="628:704" ph="{...}" />
+            <marker date="1540921411867" expanded="true" signature="733:809" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/FibbonacciSequenceGenerator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <marker date="1540315350055" expanded="true" signature="61:2088" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="134:2086" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="240:290" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="346:513" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="570:796" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="835:902" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="951:1306" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="1098:1254" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="1346:1403" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="1456:1819" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="1670:1782" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="1884:2080" ph="{...}" />
+            <marker date="1540315350055" expanded="true" signature="1934:2069" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileSorting/Interfaces/Sorting/IDistribution.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <marker date="1540907785024" expanded="false" signature="6:58" ph="..." />
+            <marker date="1540907785024" expanded="true" signature="86:164" ph="{...}" />
+            <marker date="1540907785024" expanded="true" signature="123:162" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/OutputBufferTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <marker date="1540935670525" expanded="true" signature="6:147" ph="..." />
+            <marker date="1540935670525" expanded="true" signature="180:2498" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="235:2496" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="371:1126" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="434:770" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="912:991" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="1206:1459" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="1554:1854" ph="{...}" />
+            <marker date="1540935670525" expanded="true" signature="1979:2490" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileIO/Readers/FileReader.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <marker date="1539771574399" expanded="false" signature="6:72" ph="..." />
+            <marker date="1539771574399" expanded="true" signature="90:1542" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="134:1540" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="683:785" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="823:1357" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="888:1186" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="1037:1172" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="1394:1534" ph="{...}" />
+            <marker date="1539771574399" expanded="true" signature="1449:1524" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileIO/RecordIO/LineBasedRecordReader.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+          <folding>
+            <marker date="1540328269606" expanded="false" signature="6:156" ph="..." />
+            <marker date="1540328269606" expanded="true" signature="183:1288" ph="{...}" />
+            <marker date="1540328269606" expanded="true" signature="240:1286" ph="{...}" />
+            <marker date="1540328269606" expanded="true" signature="405:522" ph="{...}" />
+            <marker date="1540328269606" expanded="true" signature="664:753" ph="{...}" />
+            <marker date="1540328269606" expanded="true" signature="865:985" ph="{...}" />
+            <marker date="1540328269606" expanded="true" signature="1046:1187" ph="{...}" />
+            <marker date="1540328269606" expanded="true" signature="1218:1280" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/InputBuffer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding>
+            <marker date="1540580631449" expanded="false" signature="6:95" ph="..." />
+            <marker date="1540580631449" expanded="true" signature="123:1293" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="169:1291" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="428:517" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="565:711" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="755:992" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="793:918" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="1023:1080" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="1112:1169" ph="{...}" />
+            <marker date="1540580631449" expanded="true" signature="1229:1285" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Interfaces/IFileBufferIO.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+          <folding>
+            <marker date="1540936810809" expanded="false" signature="6:122" ph="..." />
+            <marker date="1540936810809" expanded="true" signature="150:589" ph="{...}" />
+            <marker date="1540936810809" expanded="true" signature="187:587" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/OutputBuffer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+          <folding>
+            <marker date="1540936228167" expanded="false" signature="6:95" ph="..." />
+            <marker date="1540936228167" expanded="true" signature="123:1982" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="171:1980" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="573:718" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="779:979" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="1040:1240" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="1292:1378" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="1422:1680" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="1460:1611" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="1712:1769" ph="{...}" />
+            <marker date="1540936228167" expanded="true" signature="1834:1974" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/BufferIOTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <marker date="1540909703048" expanded="false" signature="6:141" ph="..." />
+            <marker date="1540909703048" expanded="true" signature="174:1797" ph="{...}" />
+            <marker date="1540909703048" expanded="true" signature="225:1795" ph="{...}" />
+            <marker date="1540909703048" expanded="true" signature="308:1789" ph="{...}" />
+            <marker date="1540909703048" expanded="true" signature="1052:1431" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO_Test/DynamicDistributionTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+          <folding>
+            <marker date="1540937391090" expanded="true" signature="6:136" ph="..." />
+            <marker date="1540937391090" expanded="true" signature="169:2455" ph="{...}" />
+            <marker date="1540937391090" expanded="true" signature="231:2453" ph="{...}" />
+            <marker date="1540937391090" expanded="true" signature="433:1729" ph="{...}" />
+            <marker date="1540937391090" expanded="true" signature="754:1013" ph="{...}" />
+            <marker date="1540937391090" expanded="true" signature="1784:2242" ph="{...}" />
+            <marker date="1540937391090" expanded="true" signature="2307:2447" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileSorting/Sorting/DynamicDistribution.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="71" lean-forward="true" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
+          <folding>
+            <marker date="1540937384070" expanded="false" signature="6:132" ph="..." />
+            <marker date="1540937384070" expanded="true" signature="173:3488" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="180:402" ph="/// This class' task is to distribute sequences found in the source file without knowing how many sequences there ... " />
+            <marker date="1540937384070" expanded="true" signature="455:3486" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="992:1329" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="1363:2084" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="1692:2074" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="1848:2030" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="2161:2582" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="2244:2572" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="2456:2558" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="2625:2799" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="2863:3177" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="3222:3480" ph="{...}" />
+            <marker date="1540937384070" expanded="true" signature="3334:3426" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequentialFileIO/Buffers/FileBufferIO.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
+          <folding>
+            <marker date="1540936862412" expanded="false" signature="6:218" ph="..." />
+            <marker date="1540936862412" expanded="true" signature="246:2432" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="294:2430" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="721:1343" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="953:1127" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="1175:1333" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="1407:1622" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="1664:1745" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="1821:1903" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="1961:2036" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="2084:2170" ph="{...}" />
+            <marker date="1540936862412" expanded="true" signature="2365:2424" ph="{...}" />
           </folding>
         </state>
       </provider>
