@@ -24,10 +24,18 @@ namespace FileIO.RecordIO
         }
         public int Length => valueComponents.Length;
         IRecord IRecord.Min => Min;
+        IRecord IRecord.Max => Max;
+
         public bool IsDummy { get; private set; }
         public string[] ValueComponentsArray => valueComponents.Select(value => value.ToString()).ToArray();
 
         public static IRecord Min => new Record(new double[0]);
+        public static IRecord Max => new Record(new double[15]
+        {
+            double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue,
+            double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue,
+            double.MaxValue, double.MaxValue, double.MaxValue
+        });
         private double[] valueComponents;
 
         public Record(double[] valueComponents, bool isDummy = false)

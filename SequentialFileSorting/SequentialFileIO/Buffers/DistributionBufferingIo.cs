@@ -10,17 +10,14 @@ using SequentialFileIO.Enums;
 
 namespace SequentialFileIO
 {
-    public class FileBufferIO : IFileBufferIO
+    public class DistributionIO : BufferManagementBase, IDistributionIO
     {
-        private IOutputBuffer[] outputBuffers;
-        private IInputBuffer[] inputBuffers;
-
         public int InputBufferIndex { get; set; }
         
         private int capacity;
-        private int selectedBuffer = 0;
+        
 
-        public FileBufferIO(int capacity, IInputBuffer sourceInputBuffer, IOutputBuffer sourceOutputBuffer,
+        public DistributionIO(int capacity, IInputBuffer sourceInputBuffer, IOutputBuffer sourceOutputBuffer,
             IInputBuffer[] temporaryInputBuffers, IOutputBuffer[] temporaryOutputBuffers)
         {
             this.capacity = capacity;
@@ -59,20 +56,17 @@ namespace SequentialFileIO
 
         public void AppendToOutputBuffer(IRecord record)
         {
-            this[selectedBuffer].AppendRecord(record);
+            GetOutputBuffer(selectedBuffer).AppendRecord(record);
         }
 
         public void SwitchToNextOutputBuffer()
         {
             selectedBuffer = (selectedBuffer + 1) % capacity - 1;
         }
-
-        public IOutputBuffer this[int i] => 
-            i >= InputBufferIndex ? outputBuffers[i + 1] : outputBuffers[i];
         
         public IOutputBuffer GetOutputBuffer(int bufferNumber)
         {
-            return this[bufferNumber];
+            return bufferNumber >= InputBufferIndex ? outputBuffers[bufferNumber + 1] : outputBuffers[bufferNumber];
         }
     }
 }

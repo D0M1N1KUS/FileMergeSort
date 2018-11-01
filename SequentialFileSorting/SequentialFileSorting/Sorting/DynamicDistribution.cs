@@ -13,7 +13,7 @@ namespace SequentialFileSorting.Sorting
     public class DynamicDistribution : IDistribution
     {
         public INumberSequenceGenerator FibonacciSequenceGenerator;
-        public IFileBufferIO BufferIO;
+        public IDistributionIO BufferIO;
         
         private IRecord lastRecord = Record.Min;
         private IRecord currentRecord = Record.Min;
@@ -22,7 +22,7 @@ namespace SequentialFileSorting.Sorting
 
         private bool seriesDidntEnd => currentRecord.Value >= lastRecord.Value;
 
-        public DynamicDistribution(int numberOfOutputBuffers, IFileBufferIO bufferIo, INumberSequenceGenerator fibonacciSequenceGenerator = null)
+        public DynamicDistribution(int numberOfOutputBuffers, IDistributionIO bufferIo, INumberSequenceGenerator fibonacciSequenceGenerator = null)
         {
             if(bufferIo == null)
                 throw new Exception("Distribution: buffers can't be null!");
@@ -60,7 +60,7 @@ namespace SequentialFileSorting.Sorting
                 
                 for (var i = 0; i < optimalDistribution.Length; i++)
                 {
-                    optimalDistribution[i] -= BufferIO[i].Series;
+                    optimalDistribution[i] -= BufferIO.GetOutputBuffer(i).Series;
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace SequentialFileSorting.Sorting
             if (BufferIO.InputBufferHasNext())
                 writeNextSeriesToBuffer(i);
             else
-                BufferIO[i].AddDummyRecord();
+                BufferIO.GetOutputBuffer(i).AddDummyRecord();
         }
 
         private void writeNextSeriesToBuffer(int bufferNumber)

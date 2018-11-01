@@ -7,6 +7,7 @@ namespace FileIO.RecordIO.Interfaces
         double Value { get; }
         int Length { get; }
         IRecord Min { get; }
+        IRecord Max { get; }
         bool IsDummy { get; }
         string[] ValueComponentsArray { get; }
         string ValueComponentsString(string separator);

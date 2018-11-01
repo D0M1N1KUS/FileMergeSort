@@ -13,7 +13,7 @@ namespace SequentialFileIO_Test
         [Ignore("Can't modify returning values for index accessors")]
         public void distributeRecordsInFile_TheNumberOfRecordsCanBeEvenlyDistributedNotRequiringDummyRecords()
         {
-            var fileBufferIO = Substitute.For<IFileBufferIO>();
+            var fileBufferIO = Substitute.For<IDistributionIO>();
             fileBufferIO.InputBufferHasNext().Returns(true, true, true, true, true, true, true, true, true, true, 
                 true, true, true, true, true, false, false, false, false);
             var recordArray = new IRecord[]
@@ -36,9 +36,9 @@ namespace SequentialFileIO_Test
             fileBufferIO.Received().AppendToOutputBuffer(1, recordArray[4]);
         }
 
-        private IFileBufferIO getSampleFileBufferIO()
+        private IDistributionIO getSampleFileBufferIO()
         {
-            var fileBufferIO = Substitute.For<IFileBufferIO>();
+            var fileBufferIO = Substitute.For<IDistributionIO>();
             fileBufferIO.InputBufferHasNext().Returns(true, true, true, true, true, true, true, true, true, true, 
                 true, true, true, true, true, false, false, false, false);
             fileBufferIO.GetOutputBuffer(0).Series.Returns(1, 1, 2);

@@ -34,7 +34,7 @@ namespace SequentialFileIO_Test
                 tempOutputBuffers[i].LastAppendedRecord.Returns(badRecord);
             }
 
-            var fileBufferIO = new FileBufferIO(4, sourceInputBuffer, sourceOutputBuffer, tempInputBuffers,
+            var fileBufferIO = new DistributionBufferingIo(4, sourceInputBuffer, sourceOutputBuffer, tempInputBuffers,
                 tempOutputBuffers);
 
             var actualRecord = fileBufferIO.GetNextFromCurrentInputBuffer();
