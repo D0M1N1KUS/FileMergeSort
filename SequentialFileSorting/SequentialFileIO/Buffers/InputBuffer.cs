@@ -32,7 +32,7 @@ namespace SequentialFileIO
             if (HasDummy())
             {
                 DummyRecords--;
-                return new Record(new double[0], isDummy: true);
+                return Record.Dummy;
             }
             throw new Exception("No more dummy records left!");
         }

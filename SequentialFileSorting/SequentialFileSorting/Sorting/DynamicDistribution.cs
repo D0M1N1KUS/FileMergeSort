@@ -6,14 +6,10 @@ using SequentialFileIO;
 
 namespace SequentialFileSorting.Sorting
 {
-    /// <summary>
-    /// This class' task is to distribute sequences found in the source file without knowing how many sequences there are.
-    /// After the distribution dummy sequences are added as needed
-    /// </summary>
     public class DynamicDistribution : IDistribution
     {
         public INumberSequenceGenerator FibonacciSequenceGenerator;
-        public IDistributionIO BufferIO;
+        public IDistributionBufferingIO BufferIO;
         
         private IRecord lastRecord = Record.Min;
         private IRecord currentRecord = Record.Min;
@@ -22,11 +18,11 @@ namespace SequentialFileSorting.Sorting
 
         private bool seriesDidntEnd => currentRecord.Value >= lastRecord.Value;
 
-        public DynamicDistribution(int numberOfOutputBuffers, IDistributionIO bufferIo, INumberSequenceGenerator fibonacciSequenceGenerator = null)
+        public DynamicDistribution(int numberOfOutputBuffers, IDistributionBufferingIO bufferIO, INumberSequenceGenerator fibonacciSequenceGenerator = null)
         {
-            if(bufferIo == null)
+            if(bufferIO == null)
                 throw new Exception("Distribution: buffers can't be null!");
-            BufferIO = bufferIo;
+            BufferIO = bufferIO;
             this.FibonacciSequenceGenerator = fibonacciSequenceGenerator ?? new FibonacciSequenceGenerator();
             this.numberOfOutputBuffers = numberOfOutputBuffers;
         }

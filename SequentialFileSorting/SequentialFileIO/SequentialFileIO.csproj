@@ -39,9 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buffers\BufferManagementBase.cs" />
-    <Compile Include="Buffers\DistributionBufferingIo.cs" />
+    <Compile Include="Buffers\DistributionBufferingIO.cs" />
     <Compile Include="Buffers\InputBuffer.cs" />
-    <Compile Include="Buffers\MergeBufferingIo.cs" />
+    <Compile Include="Buffers\MergeBufferingIO.cs" />
     <Compile Include="Buffers\OutputBuffer.cs" />
     <Compile Include="Enums\BufferOperationType.cs" />
     <Compile Include="Enums\LetterProperties.cs" />

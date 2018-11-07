@@ -1,6 +1,6 @@
 namespace SequentialFileIO
 {
-    public interface IMergeSort
+    public interface ISortingBuffers
     {
         
     }

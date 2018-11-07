@@ -1,3 +1,4 @@
+using System;
 using FileIO.RecordIO;
 using FileIO.RecordIO.Interfaces;
 using NUnit.Framework;
@@ -66,6 +67,98 @@ namespace SequentialFileIO_Test
             Assert.AreNotEqual(previousSmallest, actualSmallestRecord);
             Assert.AreEqual(expectedIndex, actualIndex);
             Assert.AreEqual(expectedSmallestRecord, actualSmallestRecord);
+        }
+
+        [Test]
+        public void getSmallestRecordAndIndex_ListContainsDummyRecord_DummyRecordsShouldBeIgnored()
+        {
+            IRecord expectedSmallestRecord = new Record(new double[]{10000});
+            var expectedIndex = 4;
+            var comparer = new MinRecordValueComparer();
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(expectedSmallestRecord);
+            comparer.AddRecordToComparison(Record.Dummy);
+
+            var actualIndex = comparer.GetIndexOfSmallest();
+            var actualSmallestRecord = comparer.SmallestRecord;
+            
+            Assert.AreEqual(expectedIndex, actualIndex);
+            Assert.AreEqual(expectedSmallestRecord, actualSmallestRecord);
+        }
+        
+        [Test]
+        public void getSmallestRecordAndIndex_ListContainsNullRecords_NullRecordsShouldBeIgnored()
+        {
+            IRecord expectedSmallestRecord = new Record(new double[]{10000});
+            var expectedIndex = 4;
+            var comparer = new MinRecordValueComparer();
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(expectedSmallestRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+
+            var actualIndex = comparer.GetIndexOfSmallest();
+            var actualSmallestRecord = comparer.SmallestRecord;
+            
+            Assert.AreEqual(expectedIndex, actualIndex);
+            Assert.AreEqual(expectedSmallestRecord, actualSmallestRecord);
+        }
+        
+        [Test]
+        public void getSmallestRecordAndIndex_ListContainsNullAndDummyRecords_OnlyNormalRecordsShouldBeConsidered()
+        {
+            IRecord expectedSmallestRecord = new Record(new double[]{10000});
+            var expectedIndex = 4;
+            var comparer = new MinRecordValueComparer();
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(expectedSmallestRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+
+            var actualIndex = comparer.GetIndexOfSmallest();
+            var actualSmallestRecord = comparer.SmallestRecord;
+            
+            Assert.AreEqual(expectedIndex, actualIndex);
+            Assert.AreEqual(expectedSmallestRecord, actualSmallestRecord);
+        }
+
+        [Test]
+        public void getSmallestRecordAndIndex_ListContainsOnlyNullAndDummyRecords_FirstDummyRecordShouldBeSmallest()
+        {
+            var expectedSmallestRecord = Record.Dummy;
+            var expectedIndex = 2;
+            var comparer = new MinRecordValueComparer();
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(expectedSmallestRecord);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.Dummy);
+            comparer.AddRecordToComparison(Record.NullRecord);
+
+            var actualIndex = comparer.GetIndexOfSmallest();
+            var actualSmallestRecord = comparer.SmallestRecord;
+            
+            Assert.AreEqual(expectedIndex, actualIndex);
+            Assert.AreEqual(expectedSmallestRecord, actualSmallestRecord);
+        }
+
+        [Test]
+        public void getSmallestRecord_ListContainsOnlyNullRecords_ComparerShouldThrowException()
+        {
+            var comparer = new MinRecordValueComparer();
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+            comparer.AddRecordToComparison(Record.NullRecord);
+
+            Assert.Throws<Exception>(() => comparer.GetIndexOfSmallest());
         }
     }
 }

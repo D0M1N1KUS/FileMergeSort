@@ -10,15 +10,15 @@ using SequentialFileIO.Enums;
 
 namespace SequentialFileIO
 {
-    public class DistributionIO : BufferManagementBase, IDistributionIO
+    public class DistributionBufferingIO : BufferManagementBase, IDistributionBufferingIO
     {
         public int InputBufferIndex { get; set; }
         
         private int capacity;
         
 
-        public DistributionIO(int capacity, IInputBuffer sourceInputBuffer, IOutputBuffer sourceOutputBuffer,
-            IInputBuffer[] temporaryInputBuffers, IOutputBuffer[] temporaryOutputBuffers)
+        public DistributionBufferingIO(int capacity, ref IInputBuffer sourceInputBuffer, ref IOutputBuffer sourceOutputBuffer,
+            ref IInputBuffer[] temporaryInputBuffers, ref IOutputBuffer[] temporaryOutputBuffers)
         {
             this.capacity = capacity;
             outputBuffers = new IOutputBuffer[capacity];

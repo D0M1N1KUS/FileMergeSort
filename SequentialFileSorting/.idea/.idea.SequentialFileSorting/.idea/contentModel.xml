@@ -40,6 +40,7 @@
           <e p="RecordAppender.cs" t="Include" />
           <e p="ValueComponentsSplitter.cs" t="Include" />
         </e>
+        <e p="RecordType.cs" t="Include" />
         <e p="Writers" t="Include">
           <e p="BlockSplitter.cs" t="Include" />
           <e p="BlockWriter.cs" t="Include" />
@@ -88,9 +89,9 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Buffers" t="Include">
           <e p="BufferManagementBase.cs" t="Include" />
-          <e p="DistributionIO.cs" t="Include" />
+          <e p="DistributionBufferingIo.cs" t="Include" />
           <e p="InputBuffer.cs" t="Include" />
-          <e p="MergingIO.cs" t="Include" />
+          <e p="MergeBufferingIo.cs" t="Include" />
           <e p="OutputBuffer.cs" t="Include" />
         </e>
         <e p="Enums" t="Include">
@@ -104,13 +105,12 @@
           <e p="TemporaryFileNameGenerator.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
-          <e p="IBufferIO.cs" t="Include" />
-          <e p="IDistributionIO.cs" t="Include" />
+          <e p="IDistributionBufferingIO.cs" t="Include" />
           <e p="IDummyRecords.cs" t="Include" />
           <e p="IFileExistsChecker.cs" t="Include" />
           <e p="IFileNameGenerator.cs" t="Include" />
           <e p="IInputBuffer.cs" t="Include" />
-          <e p="IMergingIO.cs" t="Include" />
+          <e p="IMergeBufferingIO.cs" t="Include" />
           <e p="INumberSequenceGenerator.cs" t="Include" />
           <e p="IOutputBuffer.cs" t="Include" />
           <e p="IRandomStringGenerator.cs" t="Include" />
@@ -126,6 +126,8 @@
         <e p="BufferIOTests.cs" t="Include" />
         <e p="DynamicDistributionTests.cs" t="Include" />
         <e p="FibonacciSequenceGeneratorTest.cs" t="Include" />
+        <e p="MergeBufferingIOTests.cs" t="Include" />
+        <e p="MergerTests.cs" t="Include" />
         <e p="MinRecordValueComparerTests.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="OutputBufferTests.cs" t="Include" />
@@ -145,8 +147,9 @@
         <e p="Interfaces" t="Include">
           <e p="Sorting" t="Include">
             <e p="IDistribution.cs" t="Include" />
-            <e p="IMergeSort.cs" t="Include" />
+            <e p="IMerging.cs" t="Include" />
             <e p="IRecordValueComparer.cs" t="Include" />
+            <e p="ISortingBuffers.cs" t="Include" />
           </e>
         </e>
         <e p="MainWindow.xaml" t="Include" />
@@ -160,8 +163,9 @@
         <e p="SequentialFileSorting.csproj" t="IncludeRecursive" />
         <e p="Sorting" t="Include">
           <e p="DynamicDistribution.cs" t="Include" />
+          <e p="Merger.cs" t="Include" />
           <e p="MinRecordValueComparer.cs" t="Include" />
-          <e p="RecordMergeSort.cs" t="Include" />
+          <e p="RecordSortingBuffers.cs" t="Include" />
         </e>
       </e>
       <e p="SequentialFileSorting.sln" t="IncludeFlat" />

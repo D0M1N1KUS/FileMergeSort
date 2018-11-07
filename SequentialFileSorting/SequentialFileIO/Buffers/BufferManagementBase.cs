@@ -1,6 +1,6 @@
 namespace SequentialFileIO
 {
-    public class BufferManagementBase
+    public abstract class BufferManagementBase
     {
         protected IOutputBuffer[] outputBuffers;
         protected IInputBuffer[] inputBuffers;

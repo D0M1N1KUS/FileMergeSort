@@ -59,6 +59,8 @@
     <Compile Include="BufferIOTests.cs" />
     <Compile Include="DynamicDistributionTests.cs" />
     <Compile Include="FibonacciSequenceGeneratorTest.cs" />
+    <Compile Include="MergerTests.cs" />
+    <Compile Include="MergeBufferingIOTests.cs" />
     <Compile Include="MinRecordValueComparerTests.cs" />
     <Compile Include="OutputBufferTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

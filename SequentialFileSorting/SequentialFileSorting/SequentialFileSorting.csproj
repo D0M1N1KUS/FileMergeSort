@@ -54,11 +54,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DistributionIterator.cs" />
-    <Compile Include="Interfaces\Sorting\IMergeSort.cs" />
+    <Compile Include="Interfaces\Sorting\IMerging.cs" />
+    <Compile Include="Interfaces\Sorting\ISortingBuffers.cs" />
     <Compile Include="Interfaces\Sorting\IRecordValueComparer.cs" />
     <Compile Include="Sorting\DynamicDistribution.cs" />
+    <Compile Include="Sorting\Merger.cs" />
     <Compile Include="Sorting\MinRecordValueComparer.cs" />
-    <Compile Include="Sorting\RecordMergeSort.cs" />
+    <Compile Include="Sorting\RecordSortingBuffers.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

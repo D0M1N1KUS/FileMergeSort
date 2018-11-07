@@ -58,6 +58,7 @@
     <Compile Include="RecordIO\LineBasedRecordReader.cs" />
     <Compile Include="RecordIO\RecordAppender.cs" />
     <Compile Include="RecordIO\ValueComponentsSplitter.cs" />
+    <Compile Include="RecordType.cs" />
     <Compile Include="Writers\BlockSplitter.cs" />
     <Compile Include="Writers\BlockWriter.cs" />
     <Compile Include="Writers\Interfaces\IBlockSplitter.cs" />
