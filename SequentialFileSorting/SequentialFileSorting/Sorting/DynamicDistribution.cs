@@ -11,14 +11,11 @@ namespace SequentialFileSorting.Sorting
         public INumberSequenceGenerator FibonacciSequenceGenerator;
         public IDistributionBufferingIO BufferIO;
         
-        private IRecord lastRecord = Record.Min;
-        private IRecord currentRecord = Record.Min;
         private int numberOfOutputBuffers;
         private int[] optimalDistribution;
 
-        private bool seriesDidntEnd => currentRecord.Value >= lastRecord.Value;
-
-        public DynamicDistribution(int numberOfOutputBuffers, IDistributionBufferingIO bufferIO, INumberSequenceGenerator fibonacciSequenceGenerator = null)
+        public DynamicDistribution(int numberOfOutputBuffers, IDistributionBufferingIO bufferIO, 
+            INumberSequenceGenerator fibonacciSequenceGenerator = null)
         {
             if(bufferIO == null)
                 throw new Exception("Distribution: buffers can't be null!");
@@ -32,7 +29,6 @@ namespace SequentialFileSorting.Sorting
             var iteration = 0;
             optimalDistribution =
                 FibonacciSequenceGenerator.GetRangeOfN(iteration + 1, numberOfOutputBuffers);
-            currentRecord = BufferIO.GetNextFromCurrentInputBuffer();
             
             while (BufferIO.InputBufferHasNext() || !optimallyDistributed())
             {
@@ -40,7 +36,7 @@ namespace SequentialFileSorting.Sorting
                 for (var i = 0; i < optimalDistribution.Length; i++) 
                 {
                     if(optimalDistribution[i] <= 0) continue;
-                    writeToBuffer(i);
+                    BufferIO.WriteNextSeriesToBuffer(i);
                     optimalDistribution[i]--;
                 }
 
@@ -59,24 +55,6 @@ namespace SequentialFileSorting.Sorting
                     optimalDistribution[i] -= BufferIO.GetOutputBuffer(i).Series;
                 }
             }
-        }
-
-        private void writeToBuffer(int i)
-        {
-            if (BufferIO.InputBufferHasNext())
-                writeNextSeriesToBuffer(i);
-            else
-                BufferIO.GetOutputBuffer(i).AddDummyRecord();
-        }
-
-        private void writeNextSeriesToBuffer(int bufferNumber)
-        {
-            do
-            {
-                BufferIO.AppendToOutputBuffer(bufferNumber, currentRecord);
-                lastRecord = currentRecord;
-                currentRecord = BufferIO.GetNextFromCurrentInputBuffer();
-            } while (seriesDidntEnd && BufferIO.InputBufferHasNext());
         }
 
         private bool optimallyDistributed()

@@ -12,22 +12,24 @@ namespace SequentialFileIO
 {
     public class DistributionBufferingIO : BufferManagementBase, IDistributionBufferingIO
     {
-        public int InputBufferIndex { get; set; }
-        
         private int capacity;
+        private IRecord lastRecord = Record.Min;
+        private IRecord currentRecord = Record.Min;
         
+        private bool seriesDidntEnd => currentRecord.Value >= lastRecord.Value;
 
-        public DistributionBufferingIO(int capacity, ref IInputBuffer sourceInputBuffer, ref IOutputBuffer sourceOutputBuffer,
+        
+        public DistributionBufferingIO(int numberOfTemporaryBuffers, ref IInputBuffer sourceInputBuffer, ref IOutputBuffer sourceOutputBuffer,
             ref IInputBuffer[] temporaryInputBuffers, ref IOutputBuffer[] temporaryOutputBuffers)
         {
-            this.capacity = capacity;
+            this.capacity = numberOfTemporaryBuffers + 1;
             outputBuffers = new IOutputBuffer[capacity];
             inputBuffers = new IInputBuffer[capacity];
             if (sourceInputBuffer != null && sourceInputBuffer != null)
             {
                 outputBuffers[0] = sourceOutputBuffer;
                 inputBuffers[0] = sourceInputBuffer;
-                InputBufferIndex = 0;
+                selectedBuffer = 0;
             }
 
             for (var i = 1; i < capacity; i++)
@@ -39,19 +41,42 @@ namespace SequentialFileIO
         
         public IRecord GetNextFromCurrentInputBuffer()
         {
-            return inputBuffers[InputBufferIndex].HasNext()
-                ? inputBuffers[InputBufferIndex].GetNextRecord()
-                : inputBuffers[InputBufferIndex].RemoveDummyRecord();
+            return inputBuffers[selectedBuffer].HasNext()
+                ? inputBuffers[selectedBuffer].GetNextRecord()
+                : inputBuffers[selectedBuffer].HasDummy()
+                    ? inputBuffers[selectedBuffer].RemoveDummyRecord()
+                    : Record.NullRecord;
         }
 
         public bool InputBufferHasNext()
         {
-            return inputBuffers[InputBufferIndex].HasNext();
+            return inputBuffers[selectedBuffer].HasNext();
+        }
+        
+        public void WriteNextSeriesToBuffer(int bufferNumber)
+        {
+            if (InputBufferHasNext())
+                writeNextSeriesToBuffer(bufferNumber);
+            else
+                GetOutputBuffer(bufferNumber).AddDummyRecord();
+        }
+
+        private void writeNextSeriesToBuffer(int bufferNumber)
+        {
+            if (currentRecord.Equals(Record.Min)) currentRecord = GetNextFromCurrentInputBuffer();
+
+            do
+            {
+                AppendToOutputBuffer(bufferNumber, currentRecord);
+                lastRecord = currentRecord;
+                currentRecord = GetNextFromCurrentInputBuffer();
+
+            } while (seriesDidntEnd && InputBufferHasNext());
         }
 
         public void AppendToOutputBuffer(int bufferNumber, IRecord record)
         {
-            outputBuffers[bufferNumber].AppendRecord(record);
+            GetOutputBuffer(bufferNumber).AppendRecord(record);
         }
 
         public void AppendToOutputBuffer(IRecord record)
@@ -61,12 +86,12 @@ namespace SequentialFileIO
 
         public void SwitchToNextOutputBuffer()
         {
-            selectedBuffer = (selectedBuffer + 1) % capacity - 1;
+            selectedBuffer = (selectedBuffer + 1) % capacity;
         }
         
         public IOutputBuffer GetOutputBuffer(int bufferNumber)
         {
-            return bufferNumber >= InputBufferIndex ? outputBuffers[bufferNumber + 1] : outputBuffers[bufferNumber];
+            return bufferNumber >= selectedBuffer ? outputBuffers[bufferNumber + 1] : outputBuffers[bufferNumber];
         }
     }
 }

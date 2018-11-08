@@ -143,7 +143,6 @@
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="DistributionIterator.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="Sorting" t="Include">
             <e p="IDistribution.cs" t="Include" />

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferIOTests.cs" />
+    <Compile Include="DistributionBufferingTests.cs" />
     <Compile Include="DynamicDistributionTests.cs" />
     <Compile Include="FibonacciSequenceGeneratorTest.cs" />
     <Compile Include="MergerTests.cs" />

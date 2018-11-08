@@ -8,12 +8,14 @@ namespace SequentialFileIO
 {
     public class MergeBufferingIO : BufferManagementBase, IMergeBufferingIO
     {
-        public MergeBufferingIO(ref IInputBuffer[] inputBuffers, ref IOutputBuffer[] outputBuffers, int initialOutputBuffer)
+        public MergeBufferingIO(ref IInputBuffer[] inputBuffers, ref IOutputBuffer[] outputBuffers, 
+            int initialOutputBufferIndex)
         {
             capacity = inputBuffers.Length;
             this.inputBuffers = inputBuffers;
             this.outputBuffers = outputBuffers;
-            selectedBuffer = initialOutputBuffer;
+            selectedBuffer = initialOutputBufferIndex;
+            outputBuffers[selectedBuffer].ClearBuffer();
         }
         
         public bool AllHaveNext => hasNext().Aggregate(true, (current, boolean) => current && boolean);
@@ -74,7 +76,7 @@ namespace SequentialFileIO
             var numberOfEmptyBuffers = 0;
             for (var i = 0; i < capacity; i++)
             {
-                if (!hasNextOrDummy(i) && i != selectedBuffer)
+                if (i != selectedBuffer && !inputBuffers[i].HasNext() && !inputBuffers[i].HasDummy())
                 {
                     selectedBuffer = i;
                     numberOfEmptyBuffers++;
@@ -101,7 +103,7 @@ namespace SequentialFileIO
 
         public IInputBuffer GetInputBuffer(int bufferNumber)
         {
-            return bufferNumber >= selectedBuffer ? inputBuffers[bufferNumber - 1] : inputBuffers[bufferNumber];
+            return bufferNumber >= selectedBuffer ? inputBuffers[bufferNumber + 1] : inputBuffers[bufferNumber];
         }
     }
 }

@@ -9,10 +9,10 @@ namespace SequentialFileIO
     {
         IRecord GetNextFromCurrentInputBuffer();
         bool InputBufferHasNext();
+        void WriteNextSeriesToBuffer(int bufferNumber);
         void AppendToOutputBuffer(int bufferNumber, IRecord record);
         void AppendToOutputBuffer(IRecord record);
         void SwitchToNextOutputBuffer();
         IOutputBuffer GetOutputBuffer(int bufferNumber);
-        int InputBufferIndex { get; set; }
     }
 }
