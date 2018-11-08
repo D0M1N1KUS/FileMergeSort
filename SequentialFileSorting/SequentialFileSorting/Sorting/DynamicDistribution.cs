@@ -6,27 +6,20 @@ using SequentialFileIO;
 
 namespace SequentialFileSorting.Sorting
 {
-    /// <summary>
-    /// This class' task is to distribute sequences found in the source file without knowing how many sequences there are.
-    /// After the distribution dummy sequences are added as needed
-    /// </summary>
     public class DynamicDistribution : IDistribution
     {
         public INumberSequenceGenerator FibonacciSequenceGenerator;
-        public IFileBufferIO BufferIO;
+        public IDistributionBufferingIO BufferIO;
         
-        private IRecord lastRecord = Record.Min;
-        private IRecord currentRecord = Record.Min;
         private int numberOfOutputBuffers;
         private int[] optimalDistribution;
 
-        private bool seriesDidntEnd => currentRecord.Value >= lastRecord.Value;
-
-        public DynamicDistribution(int numberOfOutputBuffers, IFileBufferIO bufferIo, INumberSequenceGenerator fibonacciSequenceGenerator = null)
+        public DynamicDistribution(int numberOfOutputBuffers, IDistributionBufferingIO bufferIO, 
+            INumberSequenceGenerator fibonacciSequenceGenerator = null)
         {
-            if(bufferIo == null)
+            if(bufferIO == null)
                 throw new Exception("Distribution: buffers can't be null!");
-            BufferIO = bufferIo;
+            BufferIO = bufferIO;
             this.FibonacciSequenceGenerator = fibonacciSequenceGenerator ?? new FibonacciSequenceGenerator();
             this.numberOfOutputBuffers = numberOfOutputBuffers;
         }
@@ -36,7 +29,6 @@ namespace SequentialFileSorting.Sorting
             var iteration = 0;
             optimalDistribution =
                 FibonacciSequenceGenerator.GetRangeOfN(iteration + 1, numberOfOutputBuffers);
-            currentRecord = BufferIO.GetNextFromCurrentInputBuffer();
             
             while (BufferIO.InputBufferHasNext() || !optimallyDistributed())
             {
@@ -44,7 +36,7 @@ namespace SequentialFileSorting.Sorting
                 for (var i = 0; i < optimalDistribution.Length; i++) 
                 {
                     if(optimalDistribution[i] <= 0) continue;
-                    writeToBuffer(i);
+                    BufferIO.WriteNextSeriesToBuffer(i);
                     optimalDistribution[i]--;
                 }
 
@@ -60,27 +52,9 @@ namespace SequentialFileSorting.Sorting
                 
                 for (var i = 0; i < optimalDistribution.Length; i++)
                 {
-                    optimalDistribution[i] -= BufferIO[i].Series;
+                    optimalDistribution[i] -= BufferIO.GetOutputBuffer(i).Series;
                 }
             }
-        }
-
-        private void writeToBuffer(int i)
-        {
-            if (BufferIO.InputBufferHasNext())
-                writeNextSeriesToBuffer(i);
-            else
-                BufferIO[i].AddDummyRecord();
-        }
-
-        private void writeNextSeriesToBuffer(int bufferNumber)
-        {
-            do
-            {
-                BufferIO.AppendToOutputBuffer(bufferNumber, currentRecord);
-                lastRecord = currentRecord;
-                currentRecord = BufferIO.GetNextFromCurrentInputBuffer();
-            } while (seriesDidntEnd && BufferIO.InputBufferHasNext());
         }
 
         private bool optimallyDistributed()

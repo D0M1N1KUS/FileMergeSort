@@ -34,8 +34,8 @@ namespace SequentialFileIO_Test
                 tempOutputBuffers[i].LastAppendedRecord.Returns(badRecord);
             }
 
-            var fileBufferIO = new FileBufferIO(4, sourceInputBuffer, sourceOutputBuffer, tempInputBuffers,
-                tempOutputBuffers);
+            var fileBufferIO = new DistributionBufferingIO(4, ref sourceInputBuffer, ref sourceOutputBuffer, 
+                ref tempInputBuffers, ref tempOutputBuffers);
 
             var actualRecord = fileBufferIO.GetNextFromCurrentInputBuffer();
             Assert.AreEqual(false, actualRecord.IsDummy);

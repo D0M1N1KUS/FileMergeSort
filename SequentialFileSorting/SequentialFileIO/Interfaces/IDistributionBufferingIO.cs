@@ -5,15 +5,14 @@ using SequentialFileIO.Enums;
 
 namespace SequentialFileIO
 {
-    public interface IFileBufferIO
+    public interface IDistributionBufferingIO
     {
         IRecord GetNextFromCurrentInputBuffer();
         bool InputBufferHasNext();
+        void WriteNextSeriesToBuffer(int bufferNumber);
         void AppendToOutputBuffer(int bufferNumber, IRecord record);
         void AppendToOutputBuffer(IRecord record);
         void SwitchToNextOutputBuffer();
-        IOutputBuffer this[int i] { get; }
         IOutputBuffer GetOutputBuffer(int bufferNumber);
-        int InputBufferIndex { get; set; }
     }
 }

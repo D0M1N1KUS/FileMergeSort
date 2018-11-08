@@ -9,5 +9,6 @@ namespace FileIO.Interfaces
         void CheckIfFileExists(string filePath);
         bool ValidateBlockSize(int blockSize);
         void ClearBlock();
+        void EraseFileContent();
     }
 }

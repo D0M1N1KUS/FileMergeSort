@@ -57,8 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferIOTests.cs" />
+    <Compile Include="DistributionBufferingTests.cs" />
     <Compile Include="DynamicDistributionTests.cs" />
     <Compile Include="FibonacciSequenceGeneratorTest.cs" />
+    <Compile Include="MergerTests.cs" />
+    <Compile Include="MergeBufferingIOTests.cs" />
+    <Compile Include="MinRecordValueComparerTests.cs" />
     <Compile Include="OutputBufferTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemporaryFileNameGeneratorTests.cs" />

@@ -46,6 +46,11 @@ namespace FileIO
             }
         }
 
+        public void EraseFileContent()
+        {
+            File.Create(FilePath).Close();
+        }
+
         private void createNewFileIfNecessary()
         {
             if (createNewFile)

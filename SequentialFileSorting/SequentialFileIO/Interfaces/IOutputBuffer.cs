@@ -9,5 +9,6 @@ namespace SequentialFileIO
         void AppendRecord(IRecord record);
         void AppendRecord(string[] recordComponents);
         void AppendRecord(double[] recordComponents);
+        void ClearBuffer();
     }
 }
