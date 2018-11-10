@@ -11,18 +11,6 @@ namespace FileIO.RecordIO
         public IFileReader FileReader;
         public IValueComponentsSplitter ValueComponentsSplitter;
 
-        public LineBasedRecordReader(string filePath)
-        {
-            var fileReader = new FileReaderBuilder().SetFilePath(filePath).Build();
-            
-        }
-
-        public LineBasedRecordReader(IBlockReader blockReader, ILineSeparator lineSeparator, 
-            IValueComponentsSplitter splitter)
-        {
-            FileReader = new FileReader(blockReader, lineSeparator);
-        }
-
         public LineBasedRecordReader(IFileReader fileReader, IValueComponentsSplitter valueComponentsSplitter)
         {
             FileReader = fileReader;

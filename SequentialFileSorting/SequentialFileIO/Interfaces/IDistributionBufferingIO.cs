@@ -14,5 +14,7 @@ namespace SequentialFileIO
         void AppendToOutputBuffer(IRecord record);
         void SwitchToNextOutputBuffer();
         IOutputBuffer GetOutputBuffer(int bufferNumber);
+        int Series { get; }
+        int Records { get; }
     }
 }

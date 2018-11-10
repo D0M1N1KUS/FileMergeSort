@@ -7,9 +7,10 @@ namespace FileIO
     {
         private const int DEFAULT_BLOCK_SIZE = 8;
         
-        public string FilePath { get; set; }
-        public int BlockSize  { get; set; }
-        public char[] Block { get; set; }
+        public string FilePath { get; protected set; }
+        public string FileName { get; private set; }
+        public int BlockSize  { get; protected set; }
+        public char[] Block { get; protected set; }
 
         private bool createNewFile;
 
@@ -23,6 +24,7 @@ namespace FileIO
             Block = new char[this.BlockSize];
 
             createNewFileIfNecessary();
+            FileName = Path.GetFileName(pathToFile);
         }
         
         public void CheckIfFileExists(string filePath)
@@ -54,7 +56,7 @@ namespace FileIO
         private void createNewFileIfNecessary()
         {
             if (createNewFile)
-                File.Create(FilePath);
+                File.Create(FilePath).Close();
         }
     }
 }

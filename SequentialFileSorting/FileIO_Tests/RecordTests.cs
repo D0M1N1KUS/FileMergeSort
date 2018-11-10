@@ -117,5 +117,15 @@ namespace FileIO_Tests
             
             Assert.AreEqual(expectedValueComponentsString, actualValueComponentsString);
         }
+
+        [Test]
+        public void getRecordToString()
+        {
+            var record = new Record(new double[] {1, 2, 3, 4, 5, 6});
+            var expectedRecordString = string.Join(" ", new double[] {1, 2, 3, 4, 5, 6});
+            var actualRecordString = record.ToString();
+            
+            Assert.AreEqual(expectedRecordString, actualRecordString);
+        }
     }
 }

@@ -21,6 +21,11 @@ namespace SequentialFileSorting.Sorting
         private IRecord[] currentRecords;
         private IRecord[] previousRecords;
 
+        public int DestinationBufferIndex => lastDestinationBufferIndex;
+        private int lastDestinationBufferIndex = 0;
+
+        private int steps = 0;
+
         public Merger(int numberOfInputBuffers, IMergeBufferingIO bufferIO, IRecordValueComparer comparer)
         {
             BufferIO = bufferIO;
@@ -28,8 +33,25 @@ namespace SequentialFileSorting.Sorting
             Comparer = comparer;
         }
 
+        private object lockSteps;
+        
         public bool FileIsSorted { get; private set; } = false;
-        public int Steps { get; private set; } = 0;
+        public int Steps {
+            get
+            {
+                lock (lockSteps)
+                {
+                    return steps;
+                }
+            }
+            private set
+            {
+                lock (lockSteps)
+                {
+                    steps = value;
+                }
+            }
+        }
         public int SeriesMerging { get; private set; } = 0;
 
         public void Merge()
@@ -51,35 +73,58 @@ namespace SequentialFileSorting.Sorting
                 mergeNextSeries();
                 SeriesMerging++;
             } 
-            Steps++;
+            steps++;
 
             FileIsSorted = BufferIO.AllOutputBuffersAreEmpty;
         }
-
+        
+        //the merger does not work properly. when a series ends it keeps getting values from the wrong buffer,
+        //as long as there are smaller values present
+        //getting the next element is not supposed to work that way too. when the series has ended somewhere,
+        //the already read value should not be used for comparison
         private void mergeNextSeries()
         {
             do
             {
                 indexOfSmallest = Comparer.GetIndexOfSmallest(currentRecords);
                 BufferIO.AppendToDestinationBuffer(Comparer.SmallestRecord);
-                previousRecords[indexOfSmallest] = currentRecords[indexOfSmallest];
-                currentRecords[indexOfSmallest] = BufferIO.GetNextRecordFrom(indexOfSmallest);
+                //previousRecords[indexOfSmallest] = currentRecords[indexOfSmallest];
+                //currentRecords[indexOfSmallest] = BufferIO.GetNextRecordFrom(indexOfSmallest);
+                getNext(indexOfSmallest);
             } while (allCurrentSeriesHaveNotEnded());
-            
+
+            lastDestinationBufferIndex = BufferIO.GetDestinationBufferIndex();
             BufferIO.SetAnyEmptyBufferAsDestinationBuffer();
+        }
+
+        private void getNext(int indexOfCurrentSmallest)
+        {
+            var iteration = 0;
+            var i = indexOfCurrentSmallest;
+            while (iteration < BufferIO.NumberOfTemporaryBuffers)
+            {
+                if (!((Record) currentRecords[i] < previousRecords[i]))
+                {
+                    previousRecords[i] = currentRecords[i];
+                    currentRecords[i] = BufferIO.GetNextRecordFrom(i);
+                    return;
+                }
+                i = i + 1 % BufferIO.NumberOfTemporaryBuffers;
+                iteration++;
+            }
         }
         
         private bool allCurrentSeriesHaveNotEnded()
         {
-            var allPreciousValuesAreLarger = true;
+            var endOfAllSeries = true;
             for (var i = 0; i < currentRecords.Length; i++)
             {
-                allPreciousValuesAreLarger =
-                    allPreciousValuesAreLarger && currentRecords[i].Value < previousRecords[i].Value || 
+                endOfAllSeries =
+                    endOfAllSeries && (Record)currentRecords[i] < previousRecords[i] || 
                     currentRecords[i].IsDummy || currentRecords[i].IsNull;
             }
 
-            return allPreciousValuesAreLarger;
+            return !endOfAllSeries;
         }
 
         

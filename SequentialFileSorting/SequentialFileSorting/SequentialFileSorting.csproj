@@ -53,13 +53,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Interfaces\IFrontendCallback.cs" />
     <Compile Include="Interfaces\Sorting\IMerging.cs" />
-    <Compile Include="Interfaces\Sorting\ISortingBuffers.cs" />
     <Compile Include="Interfaces\Sorting\IRecordValueComparer.cs" />
+    <Compile Include="SortingManagment\FileParameters.cs" />
+    <Compile Include="SortingManagment\ObjectManager.cs" />
+    <Compile Include="SortingManagment\PostSorting.cs" />
+    <Compile Include="SortingManagment\SortingParameters.cs" />
     <Compile Include="Sorting\DynamicDistribution.cs" />
     <Compile Include="Sorting\Merger.cs" />
     <Compile Include="Sorting\MinRecordValueComparer.cs" />
-    <Compile Include="Sorting\RecordSortingBuffers.cs" />
+    <Compile Include="Sorting\PolyPhaseSorting.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

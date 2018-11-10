@@ -6,5 +6,7 @@ namespace SequentialFileIO
     public interface IDistribution
     {
         void Distribute();
+        int Series { get; }
+        int Records { get; }
     }
 }

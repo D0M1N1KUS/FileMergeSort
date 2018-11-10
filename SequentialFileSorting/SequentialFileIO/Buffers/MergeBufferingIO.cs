@@ -8,6 +8,8 @@ namespace SequentialFileIO
 {
     public class MergeBufferingIO : BufferManagementBase, IMergeBufferingIO
     {
+        private bool firstAppending = true;
+        
         public MergeBufferingIO(ref IInputBuffer[] inputBuffers, ref IOutputBuffer[] outputBuffers, 
             int initialOutputBufferIndex)
         {
@@ -15,7 +17,6 @@ namespace SequentialFileIO
             this.inputBuffers = inputBuffers;
             this.outputBuffers = outputBuffers;
             selectedBuffer = initialOutputBufferIndex;
-            outputBuffers[selectedBuffer].ClearBuffer();
         }
         
         public bool AllHaveNext => hasNext().Aggregate(true, (current, boolean) => current && boolean);
@@ -23,11 +24,12 @@ namespace SequentialFileIO
         public bool AllOutputBuffersAreEmpty =>
             hasNextOrDummy().Aggregate(false, (current, boolean) => current && boolean);
 
+        public int NumberOfTemporaryBuffers => capacity - 1;
 
         public IRecord[] GetNextRecordsFromAllBuffers()
         {
             var records = new List<IRecord>();
-            for (var i = 0; i < capacity; i++)
+            for (var i = 0; i < NumberOfTemporaryBuffers; i++)
             {
                 records.Add(hasNextOrDummy(i) ? GetNextRecordFrom(i) : Record.NullRecord);
             }
@@ -51,8 +53,8 @@ namespace SequentialFileIO
 
         private bool[] hasNextOrDummy()
         {
-            var hasNextOrDummy = new bool[capacity];
-            for (var i = 0; i < capacity; i++)
+            var hasNextOrDummy = new bool[NumberOfTemporaryBuffers];
+            for (var i = 0; i < NumberOfTemporaryBuffers; i++)
             {
                 hasNextOrDummy[i] = this.hasNextOrDummy(i);
             }
@@ -68,6 +70,11 @@ namespace SequentialFileIO
 
         public void AppendToDestinationBuffer(IRecord record)
         {
+            if (firstAppending)
+            {
+                outputBuffers[selectedBuffer].ClearBuffer();
+                firstAppending = false;
+            }
             outputBuffers[selectedBuffer].AppendRecord(record);
         }
 

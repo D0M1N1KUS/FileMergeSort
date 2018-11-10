@@ -6,10 +6,12 @@ using FileIO.Writers.Interfaces;
 
 namespace FileIO.Writers
 {
-    public class BlockWriter : IFileWriter
+    public class BlockWriter : IFileWriter, IStatistics
     {
         public IFileIOBase FileBase;
         public IBlockSplitter BlockSplitter;
+
+        public long NumberOfAccesses { get; private set; } = 0;
 
         public BlockWriter(IFileIOBase fileBase = null, IBlockSplitter blockSplitter = null, bool overwriteFile = false)
         {
@@ -33,6 +35,7 @@ namespace FileIO.Writers
         public void WriteLine(string text)
         {
             Write(text + Environment.NewLine);
+            NumberOfAccesses++;
         }
 
         public void Flush()
@@ -40,9 +43,10 @@ namespace FileIO.Writers
             using (var streamWriter = new StreamWriter(FileBase.FilePath, append: true))
             {
                 streamWriter.Write(BlockSplitter.ExcessText);
+                NumberOfAccesses++;
             }
         }
-        
-        
+
+
     }
 }

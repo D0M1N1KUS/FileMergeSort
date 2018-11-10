@@ -12,31 +12,22 @@ namespace SequentialFileIO
 {
     public class DistributionBufferingIO : BufferManagementBase, IDistributionBufferingIO
     {
-        private int capacity;
         private IRecord lastRecord = Record.Min;
         private IRecord currentRecord = Record.Min;
         
         private bool seriesDidntEnd => currentRecord.Value >= lastRecord.Value;
 
-        
-        public DistributionBufferingIO(int numberOfTemporaryBuffers, ref IInputBuffer sourceInputBuffer, ref IOutputBuffer sourceOutputBuffer,
-            ref IInputBuffer[] temporaryInputBuffers, ref IOutputBuffer[] temporaryOutputBuffers)
-        {
-            this.capacity = numberOfTemporaryBuffers + 1;
-            outputBuffers = new IOutputBuffer[capacity];
-            inputBuffers = new IInputBuffer[capacity];
-            if (sourceInputBuffer != null && sourceInputBuffer != null)
-            {
-                outputBuffers[0] = sourceOutputBuffer;
-                inputBuffers[0] = sourceInputBuffer;
-                selectedBuffer = 0;
-            }
+        public int Series { get; private set; } = 0;
+        public int Records { get; private set; } = 0;
 
-            for (var i = 1; i < capacity; i++)
-            {
-                outputBuffers[i] = temporaryOutputBuffers[i - 1];
-                inputBuffers[i] = temporaryInputBuffers[i - 1];
-            }
+        
+        public DistributionBufferingIO(ref IInputBuffer[] inputBuffers, ref IOutputBuffer[] outputBuffers, 
+            int sourceBufferIndex)
+        {
+            capacity = outputBuffers.Length;
+            this.outputBuffers = outputBuffers;
+            this.inputBuffers = inputBuffers;
+            selectedBuffer = sourceBufferIndex;
         }
         
         public IRecord GetNextFromCurrentInputBuffer()
@@ -70,7 +61,7 @@ namespace SequentialFileIO
                 AppendToOutputBuffer(bufferNumber, currentRecord);
                 lastRecord = currentRecord;
                 currentRecord = GetNextFromCurrentInputBuffer();
-
+                Records++;
             } while (seriesDidntEnd && InputBufferHasNext());
         }
 
