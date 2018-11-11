@@ -6,7 +6,17 @@ namespace FileIO.Writers
 {
     public class BlockSplitter : IBlockSplitter
     {
-        public string ExcessText => excessText;
+        public string ExcessText
+        {
+            get
+            {
+                var text = excessText;
+                excessText = string.Empty;
+                return text;
+            }
+        }
+
+        
 
         public IFileIOBase FileBase;
 

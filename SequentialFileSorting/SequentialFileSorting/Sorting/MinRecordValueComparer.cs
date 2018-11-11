@@ -11,29 +11,20 @@ namespace SequentialFileSorting.Sorting
     public class MinRecordValueComparer : IRecordValueComparer
     {
         private List<IRecord> comparisonList = new List<IRecord>();
+        private List<bool> seriesEndedList = new List<bool>();
         public int IndexOfSmallest { get; private set; } = -1;
         private bool collectionChanged = false;
         
         public IRecord SmallestRecord { get; private set; } = Record.Max;
 
-
-        public void Compare()
-        {
-            GetIndexOfSmallest();
-        }
-
-        public void Compare(params IRecord[] recordsList)
-        {
-            GetIndexOfSmallest(recordsList);
-        }
-
-        public int GetIndexOfSmallest(params IRecord[] recordsList)
+        public int GetIndexOfSmallest(IRecord[] recordsList, bool[] seriesEndedList)
         {
             SmallestRecord = Record.Max;
             IndexOfSmallest = -1;
             for (var i = 0; i < recordsList.Length; i++)
             {
-                if (recordIsNotNull(recordsList[i]) && currentSmallestRecordIsBiggerOrDummy(recordsList[i]))
+                if (recordIsNotNull(recordsList[i]) && currentSmallestRecordIsBiggerOrDummy(recordsList[i]) && 
+                    !seriesEndedList[i])
                 {
                     SmallestRecord = currentRecordIsNotDummyOrSmallestHasNotBeenSet(recordsList[i])
                         ? recordsList[i]
@@ -72,15 +63,17 @@ namespace SequentialFileSorting.Sorting
             return !r.IsNull;
         }
 
-        public void AddRecordToComparison(IRecord record)
+        public void AddRecordToComparison(IRecord record, bool seriesEnded)
         {
             comparisonList.Add(record);
+            seriesEndedList.Add(seriesEnded);
             collectionChanged = true;
         }
 
         public int GetIndexOfSmallest()
         {
-            return !collectionChanged ? IndexOfSmallest : GetIndexOfSmallest(comparisonList.ToArray());
+            return !collectionChanged ? IndexOfSmallest : GetIndexOfSmallest(comparisonList.ToArray(), 
+                seriesEndedList.ToArray());
         }
 
         public void Reset()

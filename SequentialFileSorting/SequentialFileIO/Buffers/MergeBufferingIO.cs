@@ -39,10 +39,10 @@ namespace SequentialFileIO
 
         public IRecord GetNextRecordFrom(int bufferNumber)
         {
-            if (inputBuffers[bufferNumber].HasNext())
+            if (GetInputBuffer(bufferNumber).HasNext())
                 return GetInputBuffer(bufferNumber).GetNextRecord();
-            if (inputBuffers[bufferNumber].HasDummy())
-                return GetInputBuffer(bufferNumber).RemoveDummyRecord();
+            if (GetInputBuffer(bufferNumber).HasDummy())
+                return RemoveDummyRecord(bufferNumber);
             return Record.NullRecord;
         }
 
@@ -81,11 +81,12 @@ namespace SequentialFileIO
         public void SetAnyEmptyBufferAsDestinationBuffer()
         {
             var numberOfEmptyBuffers = 0;
+            var nextSelectedBuffer = -1;
             for (var i = 0; i < capacity; i++)
             {
                 if (i != selectedBuffer && !inputBuffers[i].HasNext() && !inputBuffers[i].HasDummy())
                 {
-                    selectedBuffer = i;
+                    nextSelectedBuffer = i;
                     numberOfEmptyBuffers++;
                 }
             }
@@ -93,6 +94,8 @@ namespace SequentialFileIO
             if (numberOfEmptyBuffers == 0)
                 throw new Exception("MergingIO->SetEmptyBufferAsDestinationBuffer: No empty buffers found!");
             
+            inputBuffers[selectedBuffer].Rewind();
+            selectedBuffer = nextSelectedBuffer;
             outputBuffers[selectedBuffer].ClearBuffer();
         }
 
@@ -106,6 +109,11 @@ namespace SequentialFileIO
         public int GetDestinationBufferIndex()
         {
             return selectedBuffer;
+        }
+
+        public void FlushDestinationBuffer()
+        {
+            outputBuffers[selectedBuffer].FlushBuffer();
         }
 
         public IInputBuffer GetInputBuffer(int bufferNumber)

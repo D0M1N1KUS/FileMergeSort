@@ -13,12 +13,12 @@ namespace SortingTests
         public void Test1()
         {
             var testFilePath = "D:\\FileToSort.txt";
-            var unsortedFileLinesArray = new string[] {"6", "5", "4", "3", "2", "1"};
+            var unsortedFileLinesArray = new string[] {"6", "5", "4", "16", "17", "3", "2", "1"};
             var sortedFileLinesArray = new string[] {"1", "2", "3", "4", "5", "6"};
             var sortedFileContent = string.Join(Environment.NewLine, sortedFileLinesArray);
-            File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray));
+            File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
             var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
-            var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
+            var fileParameters = new FileParameters() { BlockSize = 1, SourceFileName = testFilePath, 
                 TemporaryBufferFileDirectory = "D:\\"};
             var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
             

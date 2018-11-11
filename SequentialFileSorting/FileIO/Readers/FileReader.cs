@@ -35,6 +35,11 @@ namespace FileIO
                     enqueueLines();
                     readText = LineSeparator.SeparationExcess;
                 }
+                else if (EndOfFile)
+                {
+                    foundLines = new string[]{readText};
+                    enqueueLines();
+                }
             }
 
             NumberOfAccesses++;

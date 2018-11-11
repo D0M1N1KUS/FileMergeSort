@@ -14,5 +14,6 @@ namespace SequentialFileIO
         void SetAnyEmptyBufferAsDestinationBuffer();
         void SetDestinationBuffer(int bufferIndex);
         int GetDestinationBufferIndex();
+        void FlushDestinationBuffer();
     }
 }

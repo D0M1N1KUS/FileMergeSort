@@ -10,5 +10,6 @@ namespace SequentialFileIO
         void AppendRecord(string[] recordComponents);
         void AppendRecord(double[] recordComponents);
         void ClearBuffer();
+        void FlushBuffer();
     }
 }

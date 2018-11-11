@@ -124,7 +124,7 @@ namespace SequentialFileSorting.SortingManagment
             outputBuffers = new IOutputBuffer[numberOfFiles];
             for (var i = 0; i < numberOfFiles; i++)
             {
-                outputBuffers[i] = new OutputBuffer(recordAppenders[i], fileBases[i]);
+                outputBuffers[i] = new OutputBuffer(recordAppenders[i], fileWriters[i]);
             }
         }
 
@@ -141,7 +141,8 @@ namespace SequentialFileSorting.SortingManagment
 
         protected void buildDistributionObject()
         {
-            Distribution = new DynamicDistribution(SortingParameters.NumberOfTemporaryFiles, DistributionBuffering);
+            Distribution = new Distribution(SortingParameters.NumberOfTemporaryFiles, DistributionBuffering,
+                PreSorting.GetNumberOfSeries(FileParameters.SourceFileName));
         }
 
         protected void buildMergeObject()

@@ -41,7 +41,7 @@ namespace SequentialFileIO
 
         public bool InputBufferHasNext()
         {
-            return inputBuffers[selectedBuffer].HasNext();
+            return inputBuffers[selectedBuffer].HasNext() || !currentRecord.Equals(Record.NullRecord);
         }
         
         public void WriteNextSeriesToBuffer(int bufferNumber)
@@ -49,7 +49,7 @@ namespace SequentialFileIO
             if (InputBufferHasNext())
                 writeNextSeriesToBuffer(bufferNumber);
             else
-                GetOutputBuffer(bufferNumber).AddDummyRecord();
+                AddDummyRecord(bufferNumber);
         }
 
         private void writeNextSeriesToBuffer(int bufferNumber)
@@ -63,6 +63,7 @@ namespace SequentialFileIO
                 currentRecord = GetNextFromCurrentInputBuffer();
                 Records++;
             } while (seriesDidntEnd && InputBufferHasNext());
+            
         }
 
         public void AppendToOutputBuffer(int bufferNumber, IRecord record)
@@ -79,7 +80,20 @@ namespace SequentialFileIO
         {
             selectedBuffer = (selectedBuffer + 1) % capacity;
         }
-        
+
+        public void AddDummyRecord(int bufferNumber)
+        {
+            base.AddDummyRecord(bufferNumber);
+        }
+
+        public void FlushOutputBuffers()
+        {
+            for (var i = 0; i < capacity - 1; i++)
+            {
+                GetOutputBuffer(i).FlushBuffer();
+            }
+        }
+
         public IOutputBuffer GetOutputBuffer(int bufferNumber)
         {
             return bufferNumber >= selectedBuffer ? outputBuffers[bufferNumber + 1] : outputBuffers[bufferNumber];

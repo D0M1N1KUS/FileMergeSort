@@ -20,6 +20,7 @@ namespace SequentialFileSorting.Sorting
         private int indexOfSmallest = -1;
         private IRecord[] currentRecords;
         private IRecord[] previousRecords;
+        private bool[] seriesEnded;
 
         public int DestinationBufferIndex => lastDestinationBufferIndex;
         private int lastDestinationBufferIndex = 0;
@@ -53,6 +54,11 @@ namespace SequentialFileSorting.Sorting
             }
         }
         public int SeriesMerging { get; private set; } = 0;
+        
+        private bool allCurrentSeriesHaveNotEnded => 
+            !seriesEnded.Aggregate(true, (current, boolean) => current && boolean);
+        private bool allCachedRecordsAreLegal => 
+            currentRecords.Aggregate(true, (current, record) => current && !record.IsNull);
 
         public void Merge()
         {
@@ -66,75 +72,56 @@ namespace SequentialFileSorting.Sorting
         {
             if (FileIsSorted) return;
             if (currentRecords == null) currentRecords = BufferIO.GetNextRecordsFromAllBuffers();
+            if(!allCachedRecordsAreLegal) replaceCachedNullRecords();
             
-            while (BufferIO.AllHaveNextOrDummy)
+            while (BufferIO.AllHaveNextOrDummy || allCachedRecordsAreLegal)
             {
                 resetPreviousValues();
                 mergeNextSeries();
                 SeriesMerging++;
             } 
             steps++;
-
+            BufferIO.SetAnyEmptyBufferAsDestinationBuffer();
             FileIsSorted = BufferIO.AllOutputBuffersAreEmpty;
         }
+
+        private void replaceCachedNullRecords()
+        {
+            for (var i = 0; i < currentRecords.Length; i++)
+            {
+                if (currentRecords[i].IsNull)
+                    BufferIO.GetNextRecordFrom(i);
+            }
+        }
         
-        //the merger does not work properly. when a series ends it keeps getting values from the wrong buffer,
-        //as long as there are smaller values present
-        //getting the next element is not supposed to work that way too. when the series has ended somewhere,
-        //the already read value should not be used for comparison
+        //after the buffer destination buffer swap, the indexes get mixed up, which causes an infinite loop of
+        //null records
         private void mergeNextSeries()
         {
             do
             {
-                indexOfSmallest = Comparer.GetIndexOfSmallest(currentRecords);
+                indexOfSmallest = Comparer.GetIndexOfSmallest(currentRecords, seriesEnded);
                 BufferIO.AppendToDestinationBuffer(Comparer.SmallestRecord);
-                //previousRecords[indexOfSmallest] = currentRecords[indexOfSmallest];
-                //currentRecords[indexOfSmallest] = BufferIO.GetNextRecordFrom(indexOfSmallest);
-                getNext(indexOfSmallest);
-            } while (allCurrentSeriesHaveNotEnded());
+                getNextRecord();
+            } while (allCurrentSeriesHaveNotEnded);
 
             lastDestinationBufferIndex = BufferIO.GetDestinationBufferIndex();
-            BufferIO.SetAnyEmptyBufferAsDestinationBuffer();
+            BufferIO.FlushDestinationBuffer();
         }
 
-        private void getNext(int indexOfCurrentSmallest)
+        private void getNextRecord()
         {
-            var iteration = 0;
-            var i = indexOfCurrentSmallest;
-            while (iteration < BufferIO.NumberOfTemporaryBuffers)
-            {
-                if (!((Record) currentRecords[i] < previousRecords[i]))
-                {
-                    previousRecords[i] = currentRecords[i];
-                    currentRecords[i] = BufferIO.GetNextRecordFrom(i);
-                    return;
-                }
-                i = i + 1 % BufferIO.NumberOfTemporaryBuffers;
-                iteration++;
-            }
-        }
-        
-        private bool allCurrentSeriesHaveNotEnded()
-        {
-            var endOfAllSeries = true;
-            for (var i = 0; i < currentRecords.Length; i++)
-            {
-                endOfAllSeries =
-                    endOfAllSeries && (Record)currentRecords[i] < previousRecords[i] || 
-                    currentRecords[i].IsDummy || currentRecords[i].IsNull;
-            }
-
-            return !endOfAllSeries;
+            previousRecords[indexOfSmallest] = currentRecords[indexOfSmallest];
+            currentRecords[indexOfSmallest] = BufferIO.GetNextRecordFrom(indexOfSmallest);
+            if ((Record) currentRecords[indexOfSmallest] < previousRecords[indexOfSmallest] || 
+                currentRecords[indexOfSmallest].IsNull)
+                seriesEnded[indexOfSmallest] = true;
         }
 
-        
         private void resetPreviousValues()
         {
-            previousRecords = new IRecord[currentRecords.Length];
-            for (var i = 0; i < previousRecords.Length; i++)
-            {
-                previousRecords[i] = Record.Min;
-            }
+            previousRecords = Enumerable.Repeat(Record.Min, currentRecords.Length).ToArray();
+            seriesEnded = Enumerable.Repeat(false, BufferIO.NumberOfTemporaryBuffers).ToArray();
 
             seriesIsContinuous = true;
             lastAppended = Record.NullRecord;

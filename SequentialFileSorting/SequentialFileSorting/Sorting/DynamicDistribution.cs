@@ -44,6 +44,8 @@ namespace SequentialFileSorting.Sorting
 
                 iteration++;
             }
+            
+            BufferIO.FlushOutputBuffers();
         }
 
         private void createNewOptimalDistributionIfNecessary(int iteration)

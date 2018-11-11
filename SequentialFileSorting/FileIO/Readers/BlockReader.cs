@@ -26,6 +26,12 @@ namespace FileIO
             return new string(FileBase.Block, 0, lengthOfCurrentBlock);
         }
 
+        public void Rewind()
+        {
+            CurrentBlockNumber = 0;
+            EndOfFile = false;
+        }
+
         private int readNextBlock()
         {
             var lengthOfCurrentBlock = 0;

@@ -2,13 +2,14 @@ using System;
 using FileIO.Interfaces;
 using FileIO.RecordIO;
 using FileIO.RecordIO.Interfaces;
+using FileIO.Writers.Interfaces;
 
 namespace SequentialFileIO
 {
     public class OutputBuffer : IOutputBuffer
     {
         public IRecordAppender Appender;
-        public IFileIOBase FileBase;
+        public IFileWriter FileWriter;
 
         public int Series { get; private set; } = 0;
         public int DummyRecords { get; private set; } = 0;
@@ -16,10 +17,10 @@ namespace SequentialFileIO
 
         private bool firstRecordHasBeenAppended => Series == 0 && LastAppendedRecord.Equals(Record.Min);
 
-        public OutputBuffer(IRecordAppender appender = null, IFileIOBase fileBaseOfAppender = null)
+        public OutputBuffer(IRecordAppender appender = null, IFileWriter writer = null)
         {
             Appender = appender;
-            FileBase = fileBaseOfAppender;
+            FileWriter = writer;
         }
         
         public void AppendRecord(IRecord record)
@@ -40,7 +41,13 @@ namespace SequentialFileIO
 
         public void ClearBuffer()
         {
-            FileBase?.EraseFileContent();
+            FlushBuffer();
+            FileWriter?.ClearFile();
+        }
+
+        public void FlushBuffer()
+        {
+            FileWriter?.Flush();
         }
 
         public void AddDummyRecord(int amount = 1)

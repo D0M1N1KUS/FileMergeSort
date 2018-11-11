@@ -4,5 +4,6 @@ namespace FileIO.Interfaces
     {
         bool EndOfFile { get; }
         string GetNextBlock();
+        void Rewind();
     }
 }

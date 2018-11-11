@@ -42,6 +42,11 @@ namespace SequentialFileIO
             return Reader.HasNext();
         }
 
+        public void Rewind()
+        {
+            Reader.Restart();
+        }
+
         public bool HasDummy()
         {
             return DummyRecords > 0;
