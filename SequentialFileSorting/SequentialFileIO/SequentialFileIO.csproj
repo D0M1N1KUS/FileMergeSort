@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85DC1734-817E-4E65-AB3F-3FAD6BE16AD3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SequentialFileIO</RootNamespace>
+    <AssemblyName>SequentialFileIO</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buffers\BufferManagementBase.cs" />
+    <Compile Include="Buffers\DistributionBufferingIO.cs" />
+    <Compile Include="Buffers\InputBuffer.cs" />
+    <Compile Include="Buffers\MergeBufferingIO.cs" />
+    <Compile Include="Buffers\OutputBuffer.cs" />
+    <Compile Include="Enums\BufferOperationType.cs" />
+    <Compile Include="Enums\LetterProperties.cs" />
+    <Compile Include="FibbonacciSequenceGenerator.cs" />
+    <Compile Include="FileNameGenerator\FileExistsChecker.cs" />
+    <Compile Include="FileNameGenerator\RandomStringGenerator.cs" />
+    <Compile Include="FileNameGenerator\TemporaryFileNameGenerator.cs" />
+    <Compile Include="Interfaces\IDummyRecords.cs" />
+    <Compile Include="Interfaces\IDistributionBufferingIO.cs" />
+    <Compile Include="Interfaces\IFileExistsChecker.cs" />
+    <Compile Include="Interfaces\IInputBuffer.cs" />
+    <Compile Include="Interfaces\IMergeBufferingIO.cs" />
+    <Compile Include="Interfaces\INumberSequenceGenerator.cs" />
+    <Compile Include="Interfaces\IOutputBuffer.cs" />
+    <Compile Include="Interfaces\IRandomStringGenerator.cs" />
+    <Compile Include="Interfaces\IFileNameGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileIO\FileIO.csproj">
+      <Project>{0214cdb1-a33d-42f5-89b4-facf43e9a478}</Project>
+      <Name>FileIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecordFileGenerator\RecordFileGenerator.csproj">
+      <Project>{c56f05a4-9b7e-49f6-b5df-3fdacd9a3970}</Project>
+      <Name>RecordFileGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

@@ -5,5 +5,6 @@ namespace FileIO.Writers.Interfaces
         void Write(string text);
         void WriteLine(string text);
         void Flush();
+        void ClearFile();
     }
 }

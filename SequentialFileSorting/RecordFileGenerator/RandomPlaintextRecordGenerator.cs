@@ -8,11 +8,11 @@ namespace RecordFileGenerator
 {
     public class RandomPlaintextRecordGenerator : IRandomRecordGenerator
     {
-        public IPseugeRNG Randomizer;
+        public IPseudoRNG Randomizer;
 
-        public RandomPlaintextRecordGenerator(IPseugeRNG randomizer = null, int? seed = null)
+        public RandomPlaintextRecordGenerator(IPseudoRNG randomizer = null, int? seed = null)
         {
-            Randomizer = randomizer ?? new PseudoRNG(seed ?? DateTime.Now.Millisecond);
+            Randomizer = randomizer ?? new PseudoRNG(seed ?? (int)DateTime.Now.Ticks);
         }
         
         public IRecord GenerateRandomRecord()
@@ -32,7 +32,7 @@ namespace RecordFileGenerator
 
         public double[] GenerateRandomRecordValuesDoubleArray()
         {
-            var numberOfValuesInRecord = Randomizer.GetInt(0, 15);
+            var numberOfValuesInRecord = Randomizer.GetInt(1, 15);
             var values = new double[numberOfValuesInRecord];
             for (var i = 0; i < numberOfValuesInRecord; i++)
             {

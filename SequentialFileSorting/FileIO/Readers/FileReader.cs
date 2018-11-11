@@ -4,10 +4,11 @@ using FileIO.Interfaces;
 
 namespace FileIO
 {
-    public class FileReader : IFileReader
+    public class FileReader : IFileReader, IStatistics
     {
         public bool EndOfFile => BlockReader.EndOfFile;
-        
+
+        public long NumberOfAccesses { get; private set; } = 0;
         public IBlockReader BlockReader { get; set; }
         public ILineSeparator LineSeparator { get; set; }
 
@@ -34,8 +35,15 @@ namespace FileIO
                     enqueueLines();
                     readText = LineSeparator.SeparationExcess;
                 }
+                else if (EndOfFile)
+                {
+                    foundLines = new string[]{readText};
+                    enqueueLines();
+                }
             }
 
+            NumberOfAccesses = (BlockReader as BlockReader).NumberOfAccesses;
+            
             return foundLinesQueue.Count > 0
                 ? foundLinesQueue.Dequeue()
                 : readText.Replace(Environment.NewLine, string.Empty);
@@ -48,5 +56,6 @@ namespace FileIO
                 foundLinesQueue.Enqueue(line);
             }
         }
+
     }
 }

@@ -4,9 +4,10 @@ using FileIO.Interfaces;
 
 namespace FileIO
 {
-    public class BlockReader : IBlockReader
+    public class BlockReader : IBlockReader, IStatistics
     {
         public bool EndOfFile { get; private set; } = false;
+        public long NumberOfAccesses { get; private set; } = 0;
         public IFileIOBase FileBase;
         
         protected long CurrentBlockNumber;
@@ -25,6 +26,12 @@ namespace FileIO
             return new string(FileBase.Block, 0, lengthOfCurrentBlock);
         }
 
+        public void Rewind()
+        {
+            CurrentBlockNumber = 0;
+            EndOfFile = FileBase.FileIsEmpty();
+        }
+
         private int readNextBlock()
         {
             var lengthOfCurrentBlock = 0;
@@ -39,8 +46,12 @@ namespace FileIO
 
                 lengthOfCurrentBlock = streamReader.ReadBlock(FileBase.Block, 0, FileBase.BlockSize);
             }
-
-            if (!EndOfFile) CurrentBlockNumber++;
+            NumberOfAccesses++;
+            
+            if (!EndOfFile)
+            {
+                CurrentBlockNumber++;
+            }
             
             return lengthOfCurrentBlock;
         }

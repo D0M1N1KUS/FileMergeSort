@@ -7,10 +7,13 @@
       <e p="FileIO" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Builders" t="Include">
+          <e p="FileIOBuilderBase.cs" t="Include" />
           <e p="FileReaderBuilder.cs" t="Include" />
+          <e p="FileWriterBuilder.cs" t="Include" />
         </e>
         <e p="FileIO.csproj" t="IncludeRecursive" />
         <e p="FileIoBasics.cs" t="Include" />
+        <e p="IStatistics.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
@@ -38,9 +41,10 @@
           <e p="RecordAppender.cs" t="Include" />
           <e p="ValueComponentsSplitter.cs" t="Include" />
         </e>
+        <e p="RecordType.cs" t="Include" />
         <e p="Writers" t="Include">
           <e p="BlockSplitter.cs" t="Include" />
-          <e p="FileWriter.cs" t="Include" />
+          <e p="BlockWriter.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IBlockSplitter.cs" t="Include" />
             <e p="IFileWriter.cs" t="Include" />
@@ -50,6 +54,7 @@
       <e p="FileIO_Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BlockSplitterTests.cs" t="Include" />
+        <e p="BlockWriterTests.cs" t="Include" />
         <e p="FileIO_Tests.csproj" t="IncludeRecursive" />
         <e p="FileReaderTests.cs" t="Include" />
         <e p="NewLineSeparatorTests.cs" t="Include" />
@@ -58,16 +63,18 @@
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="RecordGeneratorTests.cs" t="Include" />
         <e p="RecordReaderTests.cs" t="Include" />
         <e p="RecordTests.cs" t="Include" />
         <e p="TEST.txt" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="Project" t="Include" />
       <e p="RecordFileGenerator" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="GeneratorSizeType.cs" t="Include" />
         <e p="Interfaces" t="Include">
-          <e p="IPseugeRNG.cs" t="Include" />
+          <e p="IPseudoRNG.cs" t="Include" />
           <e p="IRandomRecordGenerator.cs" t="Include" />
           <e p="IRecordFileGenerator.cs" t="Include" />
         </e>
@@ -80,11 +87,77 @@
         <e p="RecordFileGenerator.cs" t="Include" />
         <e p="RecordFileGenerator.csproj" t="IncludeRecursive" />
       </e>
+      <e p="SequentialFileIO" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Buffers" t="Include">
+          <e p="BufferManagementBase.cs" t="Include" />
+          <e p="DistributionBufferingIo.cs" t="Include" />
+          <e p="InputBuffer.cs" t="Include" />
+          <e p="MergeBufferingIo.cs" t="Include" />
+          <e p="OutputBuffer.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="BufferOperationType.cs" t="Include" />
+          <e p="LetterProperties.cs" t="Include" />
+        </e>
+        <e p="FibbonacciSequenceGenerator.cs" t="Include" />
+        <e p="FileNameGenerator" t="Include">
+          <e p="FileExistsChecker.cs" t="Include" />
+          <e p="RandomStringGenerator.cs" t="Include" />
+          <e p="TemporaryFileNameGenerator.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IDistributionBufferingIO.cs" t="Include" />
+          <e p="IDummyRecords.cs" t="Include" />
+          <e p="IFileExistsChecker.cs" t="Include" />
+          <e p="IFileNameGenerator.cs" t="Include" />
+          <e p="IInputBuffer.cs" t="Include" />
+          <e p="IMergeBufferingIO.cs" t="Include" />
+          <e p="INumberSequenceGenerator.cs" t="Include" />
+          <e p="IOutputBuffer.cs" t="Include" />
+          <e p="IRandomStringGenerator.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SequentialFileIO.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="SequentialFileIO_Test" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BufferIOTests.cs" t="Include" />
+        <e p="DistributionBufferingTests.cs" t="Include" />
+        <e p="DynamicDistributionTests.cs" t="Include" />
+        <e p="FibonacciSequenceGeneratorTest.cs" t="Include" />
+        <e p="MergeBufferingIOTests.cs" t="Include" />
+        <e p="MergerTests.cs" t="Include" />
+        <e p="MinRecordValueComparerTests.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OutputBufferTests.cs" t="Include" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SequentialFileIO_Test.csproj" t="IncludeRecursive" />
+        <e p="TemporaryFileNameGeneratorTests.cs" t="Include" />
+      </e>
       <e p="SequentialFileSorting" t="IncludeRecursive">
         <e p="App.config" t="Include" />
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="ExceptionWindow.xaml" t="Include" />
+        <e p="ExceptionWindow.xaml.cs" t="Include" />
+        <e p="Interfaces" t="Include">
+          <e p="IFrontendCallback.cs" t="Include" />
+          <e p="Sorting" t="Include">
+            <e p="IDistribution.cs" t="Include" />
+            <e p="IDistributionCalculator.cs" t="Include" />
+            <e p="IMerging.cs" t="Include" />
+            <e p="IOptimalDistribution.cs" t="Include" />
+            <e p="IRecordValueComparer.cs" t="Include" />
+          </e>
+        </e>
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
@@ -93,9 +166,41 @@
           <e p="Resources.Designer.cs" t="Include" />
           <e p="Resources.resx" t="Include" />
         </e>
+        <e p="RecordGeneratorWindow.xaml" t="Include" />
+        <e p="RecordGeneratorWindow.xaml.cs" t="Include" />
         <e p="SequentialFileSorting.csproj" t="IncludeRecursive" />
+        <e p="Sorting" t="Include">
+          <e p="Distribution.cs" t="Include" />
+          <e p="DistributionCalculator.cs" t="Include" />
+          <e p="DynamicDistribution.cs" t="Include" />
+          <e p="Merger.cs" t="Include" />
+          <e p="MinRecordValueComparer.cs" t="Include" />
+          <e p="OptimalDistribution.cs" t="Include" />
+          <e p="PolyPhaseSorting.cs" t="Include" />
+          <e p="PreSorting.cs" t="Include" />
+        </e>
+        <e p="SortingManagment" t="Include">
+          <e p="FileParameters.cs" t="Include" />
+          <e p="ObjectManager.cs" t="Include" />
+          <e p="PostSorting.cs" t="Include" />
+          <e p="SortingParameters.cs" t="Include" />
+        </e>
+        <e p="Utilities.cs" t="Include" />
       </e>
       <e p="SequentialFileSorting.sln" t="IncludeFlat" />
+      <e p="SortingTests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DistributionCalculatorTests.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="PolyPhaseSortingTests.cs" t="Include" />
+        <e p="PreSortingTests.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SeriesTest.txt" t="Include" />
+        <e p="SortingTests.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Tests" t="Include" />
     </e>
   </component>
 </project>

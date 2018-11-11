@@ -16,7 +16,7 @@ namespace FileIO.RecordIO
         public RecordAppender(IFileWriter fileWriter, string separator = null)
         {
             FileWriter = fileWriter;
-            Separator = separator ?? Environment.NewLine;
+            Separator = separator ?? " ";
         }
 
 
@@ -42,5 +42,6 @@ namespace FileIO.RecordIO
             if (collection.Count == 0 || collection.Count > 15)
                 throw new Exception("RecordAppender: Invalid record length: " + collection.Count);
         }
+
     }
 }

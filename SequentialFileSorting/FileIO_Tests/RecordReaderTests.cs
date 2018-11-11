@@ -1,6 +1,5 @@
 using FileIO.Interfaces;
 using FileIO.RecordIO;
-using FileIO.RecordIO.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -36,5 +35,6 @@ namespace FileIO_Tests
             
             Assert.AreEqual(expectedRecord, actualRecord);
         }
+
     }
 }

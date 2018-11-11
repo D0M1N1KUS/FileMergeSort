@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using FileIO.Interfaces;
 
@@ -5,20 +6,26 @@ namespace FileIO
 {
     public  class FileIOBasics : IFileIOBase
     {
-        public string FilePath { get; set; }
-        public int BlockSize  { get; set; }
-        public char[] Block { get; set; }
+        private const int DEFAULT_BLOCK_SIZE = 8;
+        
+        public string FilePath { get; protected set; }
+        public string FileName { get; private set; }
+        public int BlockSize  { get; protected set; }
+        public char[] Block { get; protected set; }
 
         private bool createNewFile;
 
-        public FileIOBasics(string pathToFile, int blockSize, bool createNewFile = false)
+        public FileIOBasics(string pathToFile, int blockSize = 0, bool createNewFile = false)
         {
             this.createNewFile = createNewFile;
             CheckIfFileExists(pathToFile);
             FilePath = pathToFile;
 
-            BlockSize = ValidateBlockSize(blockSize) ? blockSize : 8;
+            BlockSize = ValidateBlockSize(blockSize) ? blockSize : DEFAULT_BLOCK_SIZE;
             Block = new char[this.BlockSize];
+
+            createNewFileIfNecessary();
+            FileName = Path.GetFileName(pathToFile);
         }
         
         public void CheckIfFileExists(string filePath)
@@ -40,6 +47,40 @@ namespace FileIO
             {
                 Block[i] = '\0';
             }
+        }
+
+        public void EraseFileContent()
+        {
+            File.Create(FilePath).Close();
+        }
+
+        public bool FileIsEmpty()
+        {
+            return new FileInfo(FilePath).Length == 0;
+        }
+
+        public void DeleteFile()
+        {
+            var temp = createNewFile;
+            try
+            {
+                createNewFile = false;
+                CheckIfFileExists(FilePath);
+                File.Delete(FilePath);
+            }
+            catch (Exception e)
+            {
+                //file does not exist
+            }
+
+            createNewFile = temp;
+
+        }
+
+        private void createNewFileIfNecessary()
+        {
+            if (createNewFile)
+                File.Create(FilePath).Close();
         }
     }
 }

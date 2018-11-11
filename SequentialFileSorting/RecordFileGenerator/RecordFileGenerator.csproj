@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneratorSizeType.cs" />
-    <Compile Include="Interfaces\IPseugeRNG.cs" />
+    <Compile Include="Interfaces\IPseudoRNG.cs" />
     <Compile Include="Interfaces\IRandomRecordGenerator.cs" />
     <Compile Include="Interfaces\IRecordFileGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
