@@ -23,6 +23,7 @@ namespace SequentialFileSorting.Sorting
         private bool[] seriesEnded;
 
         public int DestinationBufferIndex => lastDestinationBufferIndex;
+        public int ExpectedNumberOfRecords { private get; set; } = -1;
         private int lastDestinationBufferIndex = 0;
 
         private int steps = 0;
@@ -62,6 +63,7 @@ namespace SequentialFileSorting.Sorting
 
         public void Merge()
         {
+            
             while(!FileIsSorted)
             {
                 Step();
@@ -70,9 +72,8 @@ namespace SequentialFileSorting.Sorting
         
         public void Step()
         {
+            setInitialValues();
             if (FileIsSorted) return;
-            if (currentRecords == null) currentRecords = BufferIO.GetNextRecordsFromAllBuffers();
-            if(!allCachedRecordsAreLegal) replaceCachedNullRecords();
             
             while (BufferIO.AllHaveNextOrDummy || allCachedRecordsAreLegal)
             {
@@ -82,7 +83,14 @@ namespace SequentialFileSorting.Sorting
             } 
             steps++;
             BufferIO.SetAnyEmptyBufferAsDestinationBuffer();
-            FileIsSorted = BufferIO.AllOutputBuffersAreEmpty;
+        }
+
+        private void setInitialValues()
+        {
+            if(ExpectedNumberOfRecords == -1) 
+                ExpectedNumberOfRecords = ExpectedNumberOfRecords = BufferIO.GetSumOfRecordsInInputBuffers();
+            if (currentRecords == null) currentRecords = BufferIO.GetNextRecordsFromAllBuffers();
+            if(!allCachedRecordsAreLegal) replaceCachedNullRecords();
         }
 
         private void replaceCachedNullRecords()
@@ -94,19 +102,20 @@ namespace SequentialFileSorting.Sorting
             }
         }
         
-        //after the buffer destination buffer swap, the indexes get mixed up, which causes an infinite loop of
-        //null records
         private void mergeNextSeries()
         {
+            var iteration = 0;
             do
             {
                 indexOfSmallest = Comparer.GetIndexOfSmallest(currentRecords, seriesEnded);
                 BufferIO.AppendToDestinationBuffer(Comparer.SmallestRecord);
+                iteration += !Comparer.SmallestRecord.IsDummy && !Comparer.SmallestRecord.IsNull ? 1 : 0;
                 getNextRecord();
             } while (allCurrentSeriesHaveNotEnded);
 
             lastDestinationBufferIndex = BufferIO.GetDestinationBufferIndex();
             BufferIO.FlushDestinationBuffer();
+            FileIsSorted = iteration == ExpectedNumberOfRecords;
         }
 
         private void getNextRecord()

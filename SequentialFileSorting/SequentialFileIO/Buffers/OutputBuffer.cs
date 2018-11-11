@@ -14,6 +14,7 @@ namespace SequentialFileIO
         public int Series { get; private set; } = 0;
         public int DummyRecords { get; private set; } = 0;
         public IRecord LastAppendedRecord { get; private set; } = Record.Min;
+        public int RecordsInBuffer { get; private set; } = 0;
 
         private bool firstRecordHasBeenAppended => Series == 0 && LastAppendedRecord.Equals(Record.Min);
 
@@ -43,6 +44,7 @@ namespace SequentialFileIO
         {
             FlushBuffer();
             FileWriter?.ClearFile();
+            RecordsInBuffer = 0;
         }
 
         public void FlushBuffer()
@@ -75,7 +77,11 @@ namespace SequentialFileIO
         private void appendRecord(IRecord record)
         {
             checkForEndOfSeries(record);
-            if (!record.IsDummy) Appender?.AppendRecord(record);
+            if (!record.IsDummy)
+            {
+                Appender?.AppendRecord(record);
+                RecordsInBuffer++;
+            }
             LastAppendedRecord = record;
         }
 

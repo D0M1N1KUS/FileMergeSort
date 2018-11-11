@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using FileIO.Interfaces;
 
@@ -51,6 +52,29 @@ namespace FileIO
         public void EraseFileContent()
         {
             File.Create(FilePath).Close();
+        }
+
+        public bool FileIsEmpty()
+        {
+            return new FileInfo(FilePath).Length == 0;
+        }
+
+        public void DeleteFile()
+        {
+            var temp = createNewFile;
+            try
+            {
+                createNewFile = false;
+                CheckIfFileExists(FilePath);
+                File.Delete(FilePath);
+            }
+            catch (Exception e)
+            {
+                //file does not exist
+            }
+
+            createNewFile = temp;
+
         }
 
         private void createNewFileIfNecessary()

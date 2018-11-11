@@ -11,5 +11,7 @@ namespace FileIO.Interfaces
         bool ValidateBlockSize(int blockSize);
         void ClearBlock();
         void EraseFileContent();
+        bool FileIsEmpty();
+        void DeleteFile();
     }
 }

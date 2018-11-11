@@ -65,7 +65,7 @@ namespace SequentialFileSorting.Sorting
 
         public void RestoreOriginalFileName()
         {
-            PostSorting.SwapFileNames(fileBases[Merger.DestinationBufferIndex].FileName, FileParameters.SourceFileName);
+            PostSorting.SwapFileNames(fileBases[Merger.DestinationBufferIndex].FilePath, FileParameters.SourceFileName);
         }
     }
 }

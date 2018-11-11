@@ -10,10 +10,12 @@ namespace SequentialFileIO
         bool AllHaveNextOrDummy { get; }
         bool AllOutputBuffersAreEmpty { get; }
         int NumberOfTemporaryBuffers { get; }
+        int ExpectedNumberOfRecords { get; set; }
         void AppendToDestinationBuffer(IRecord record);
         void SetAnyEmptyBufferAsDestinationBuffer();
         void SetDestinationBuffer(int bufferIndex);
         int GetDestinationBufferIndex();
         void FlushDestinationBuffer();
+        int GetSumOfRecordsInInputBuffers();
     }
 }

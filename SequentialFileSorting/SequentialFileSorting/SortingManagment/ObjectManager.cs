@@ -54,6 +54,15 @@ namespace SequentialFileSorting.SortingManagment
             buildMergeObject();
         }
 
+        ~ObjectManager()
+        {
+            foreach (var file in fileBases)
+            {
+                if(file.FilePath != FileParameters.SourceFileName)
+                    file.DeleteFile();
+            }
+        }
+
 
         protected void initializeFileBasesOfTempFiles()
         {

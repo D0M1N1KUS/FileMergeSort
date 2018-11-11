@@ -48,6 +48,8 @@ namespace SequentialFileSorting.Sorting
             BufferIO.FlushOutputBuffers();
         }
 
+        public int NumberOfRecords { get; }
+
         private void createNewOptimalDistributionIfNecessary(int iteration)
         {
             if (optimallyDistributed() && BufferIO.InputBufferHasNext())

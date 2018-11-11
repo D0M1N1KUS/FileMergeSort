@@ -9,7 +9,7 @@ namespace SequentialFileSorting.Sorting
         
         private int numberOfOutputBuffers;
         private IOptimalDistribution optimalDistribution;
-
+        
         public Distribution(int numberOfOutputBuffers, IDistributionBufferingIO bufferIO, int numberOfSeries)
         {
             if(bufferIO == null)

@@ -25,6 +25,7 @@ namespace SequentialFileIO
             hasNextOrDummy().Aggregate(false, (current, boolean) => current && boolean);
 
         public int NumberOfTemporaryBuffers => capacity - 1;
+        public int ExpectedNumberOfRecords { get; set; }
 
         public IRecord[] GetNextRecordsFromAllBuffers()
         {
@@ -119,6 +120,17 @@ namespace SequentialFileIO
         public IInputBuffer GetInputBuffer(int bufferNumber)
         {
             return bufferNumber >= selectedBuffer ? inputBuffers[bufferNumber + 1] : inputBuffers[bufferNumber];
+        }
+
+        public int GetSumOfRecordsInInputBuffers()
+        {
+            var sum = 0;
+            for (var i = 0; i < NumberOfTemporaryBuffers; i++)
+            {
+                sum += getOutputBuffer(i).RecordsInBuffer;
+            }
+
+            return sum;
         }
     }
 }

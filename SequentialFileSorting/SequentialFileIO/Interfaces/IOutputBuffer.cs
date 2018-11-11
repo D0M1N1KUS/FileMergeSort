@@ -6,6 +6,7 @@ namespace SequentialFileIO
     {
         int Series { get; }
         IRecord LastAppendedRecord { get; }
+        int RecordsInBuffer { get; }
         void AppendRecord(IRecord record);
         void AppendRecord(string[] recordComponents);
         void AppendRecord(double[] recordComponents);

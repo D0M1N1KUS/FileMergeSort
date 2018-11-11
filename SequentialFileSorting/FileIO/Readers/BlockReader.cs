@@ -29,7 +29,7 @@ namespace FileIO
         public void Rewind()
         {
             CurrentBlockNumber = 0;
-            EndOfFile = false;
+            EndOfFile = FileBase.FileIsEmpty();
         }
 
         private int readNextBlock()
