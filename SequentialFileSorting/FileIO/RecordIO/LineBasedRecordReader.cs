@@ -55,6 +55,7 @@ namespace FileIO.RecordIO
         public void Restart()
         {
             FileReader.BlockReader.Rewind();
+            nextRecord = Record.Dummy;
             firstRead = true;
         }
     }

@@ -90,7 +90,7 @@ namespace SequentialFileSorting.Sorting
             for (var i = 0; i < currentRecords.Length; i++)
             {
                 if (currentRecords[i].IsNull)
-                    BufferIO.GetNextRecordFrom(i);
+                    currentRecords[i] = BufferIO.GetNextRecordFrom(i);
             }
         }
         
