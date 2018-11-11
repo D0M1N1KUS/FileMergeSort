@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using FileIO.Interfaces;
@@ -139,7 +140,10 @@ namespace FileIO.RecordIO
                    record.IsDummy == IsDummy &&
                    record.IsNull == IsNull;
         }
-        
-        
+
+        public new string ToString()
+        {
+            return string.Join(" ", valueComponents);
+        }
     }
 }

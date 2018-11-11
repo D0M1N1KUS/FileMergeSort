@@ -13,6 +13,10 @@ namespace SequentialFileIO
         void AppendToOutputBuffer(int bufferNumber, IRecord record);
         void AppendToOutputBuffer(IRecord record);
         void SwitchToNextOutputBuffer();
+        void AddDummyRecord(int bufferNumber);
+        void FlushOutputBuffers();
         IOutputBuffer GetOutputBuffer(int bufferNumber);
+        int Series { get; }
+        int Records { get; }
     }
 }

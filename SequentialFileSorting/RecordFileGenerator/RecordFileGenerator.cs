@@ -50,7 +50,7 @@ namespace RecordFileGenerator
                 {
                     var record = Generator.GenerateRandomRecord();
                     var currentLineSize = record.Length;
-                    streamWriter.Write(record);
+                    streamWriter.Write(record.ToString());
                     currentFileSize += sizeType == GeneratorSizeType.FileSize ? currentLineSize : 1;
                     Progress = currentFileSize / desiredFileSize;
                 }

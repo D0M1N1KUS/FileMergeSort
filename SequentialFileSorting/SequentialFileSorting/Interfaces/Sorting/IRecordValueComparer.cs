@@ -4,10 +4,8 @@ namespace SequentialFileIO
 {
     public interface IRecordValueComparer
     {
-        void Compare();
-        void Compare(params IRecord[] recordsList);
-        int GetIndexOfSmallest(params IRecord[] recordsList);
-        void AddRecordToComparison(IRecord record);
+        int GetIndexOfSmallest(IRecord[] recordsList, bool[] seriesEndedList);
+        void AddRecordToComparison(IRecord record, bool seriesEnded);
         int GetIndexOfSmallest();
         IRecord SmallestRecord { get; }
         int IndexOfSmallest { get; }

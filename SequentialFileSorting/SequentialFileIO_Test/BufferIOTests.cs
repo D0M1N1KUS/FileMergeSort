@@ -23,8 +23,8 @@ namespace SequentialFileIO_Test
             var sourceOutputBuffer = Substitute.For<IOutputBuffer>();
             sourceOutputBuffer.LastAppendedRecord.Returns(goodRecord);
 
-            var tempInputBuffers = new IInputBuffer[3];
-            var tempOutputBuffers = new IOutputBuffer[3];
+            var tempInputBuffers = new IInputBuffer[4];
+            var tempOutputBuffers = new IOutputBuffer[4];
             for (var i = 0; i < 3; i++)
             {
                 tempInputBuffers[i] = Substitute.For<IInputBuffer>();
@@ -34,8 +34,10 @@ namespace SequentialFileIO_Test
                 tempOutputBuffers[i].LastAppendedRecord.Returns(badRecord);
             }
 
-            var fileBufferIO = new DistributionBufferingIO(4, ref sourceInputBuffer, ref sourceOutputBuffer, 
-                ref tempInputBuffers, ref tempOutputBuffers);
+            tempInputBuffers[3] = sourceInputBuffer;
+            tempOutputBuffers[3] = sourceOutputBuffer;
+
+            var fileBufferIO = new DistributionBufferingIO(ref tempInputBuffers, ref tempOutputBuffers, 3);
 
             var actualRecord = fileBufferIO.GetNextFromCurrentInputBuffer();
             Assert.AreEqual(false, actualRecord.IsDummy);

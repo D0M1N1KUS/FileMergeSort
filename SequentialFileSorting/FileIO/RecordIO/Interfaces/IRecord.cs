@@ -16,5 +16,6 @@ namespace FileIO.RecordIO.Interfaces
         string ValueComponentsString(string separator);
         bool Equals(object obj);
         int CompareTo(IRecord other);
+        string ToString();
     }
 }

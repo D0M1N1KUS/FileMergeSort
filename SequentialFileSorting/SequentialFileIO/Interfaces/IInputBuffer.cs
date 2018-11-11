@@ -7,5 +7,6 @@ namespace SequentialFileIO
         IRecord LastRecord { get; }
         IRecord GetNextRecord();
         bool HasNext();
+        void Rewind();
     }
 }

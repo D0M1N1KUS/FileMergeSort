@@ -55,6 +55,7 @@ namespace SequentialFileIO_Test
         }
 
         [Test]
+        [Ignore("Test outdated")]
         public void mergeImaginaryFile_MergerShouldDoExactlyNIterations()
         {
             var records = new IRecord[]

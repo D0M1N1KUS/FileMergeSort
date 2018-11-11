@@ -10,6 +10,8 @@ namespace SequentialFileSorting.Sorting
     {
         public INumberSequenceGenerator FibonacciSequenceGenerator;
         public IDistributionBufferingIO BufferIO;
+        public int Series => BufferIO.Series;
+        public int Records => BufferIO.Records;
         
         private int numberOfOutputBuffers;
         private int[] optimalDistribution;
@@ -42,7 +44,11 @@ namespace SequentialFileSorting.Sorting
 
                 iteration++;
             }
+            
+            BufferIO.FlushOutputBuffers();
         }
+
+        public int NumberOfRecords { get; }
 
         private void createNewOptimalDistributionIfNecessary(int iteration)
         {

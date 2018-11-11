@@ -42,5 +42,6 @@ namespace FileIO.RecordIO
             if (collection.Count == 0 || collection.Count > 15)
                 throw new Exception("RecordAppender: Invalid record length: " + collection.Count);
         }
+
     }
 }

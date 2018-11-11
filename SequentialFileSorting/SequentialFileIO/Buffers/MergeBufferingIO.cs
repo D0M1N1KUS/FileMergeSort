@@ -8,6 +8,8 @@ namespace SequentialFileIO
 {
     public class MergeBufferingIO : BufferManagementBase, IMergeBufferingIO
     {
+        private bool firstAppending = true;
+        
         public MergeBufferingIO(ref IInputBuffer[] inputBuffers, ref IOutputBuffer[] outputBuffers, 
             int initialOutputBufferIndex)
         {
@@ -15,7 +17,6 @@ namespace SequentialFileIO
             this.inputBuffers = inputBuffers;
             this.outputBuffers = outputBuffers;
             selectedBuffer = initialOutputBufferIndex;
-            outputBuffers[selectedBuffer].ClearBuffer();
         }
         
         public bool AllHaveNext => hasNext().Aggregate(true, (current, boolean) => current && boolean);
@@ -23,11 +24,13 @@ namespace SequentialFileIO
         public bool AllOutputBuffersAreEmpty =>
             hasNextOrDummy().Aggregate(false, (current, boolean) => current && boolean);
 
+        public int NumberOfTemporaryBuffers => capacity - 1;
+        public int ExpectedNumberOfRecords { get; set; }
 
         public IRecord[] GetNextRecordsFromAllBuffers()
         {
             var records = new List<IRecord>();
-            for (var i = 0; i < capacity; i++)
+            for (var i = 0; i < NumberOfTemporaryBuffers; i++)
             {
                 records.Add(hasNextOrDummy(i) ? GetNextRecordFrom(i) : Record.NullRecord);
             }
@@ -37,10 +40,10 @@ namespace SequentialFileIO
 
         public IRecord GetNextRecordFrom(int bufferNumber)
         {
-            if (inputBuffers[bufferNumber].HasNext())
+            if (GetInputBuffer(bufferNumber).HasNext())
                 return GetInputBuffer(bufferNumber).GetNextRecord();
-            if (inputBuffers[bufferNumber].HasDummy())
-                return GetInputBuffer(bufferNumber).RemoveDummyRecord();
+            if (GetInputBuffer(bufferNumber).HasDummy())
+                return RemoveDummyRecord(bufferNumber);
             return Record.NullRecord;
         }
 
@@ -51,8 +54,8 @@ namespace SequentialFileIO
 
         private bool[] hasNextOrDummy()
         {
-            var hasNextOrDummy = new bool[capacity];
-            for (var i = 0; i < capacity; i++)
+            var hasNextOrDummy = new bool[NumberOfTemporaryBuffers];
+            for (var i = 0; i < NumberOfTemporaryBuffers; i++)
             {
                 hasNextOrDummy[i] = this.hasNextOrDummy(i);
             }
@@ -68,17 +71,23 @@ namespace SequentialFileIO
 
         public void AppendToDestinationBuffer(IRecord record)
         {
+            if (firstAppending)
+            {
+                outputBuffers[selectedBuffer].ClearBuffer();
+                firstAppending = false;
+            }
             outputBuffers[selectedBuffer].AppendRecord(record);
         }
 
         public void SetAnyEmptyBufferAsDestinationBuffer()
         {
             var numberOfEmptyBuffers = 0;
+            var nextSelectedBuffer = -1;
             for (var i = 0; i < capacity; i++)
             {
                 if (i != selectedBuffer && !inputBuffers[i].HasNext() && !inputBuffers[i].HasDummy())
                 {
-                    selectedBuffer = i;
+                    nextSelectedBuffer = i;
                     numberOfEmptyBuffers++;
                 }
             }
@@ -86,6 +95,8 @@ namespace SequentialFileIO
             if (numberOfEmptyBuffers == 0)
                 throw new Exception("MergingIO->SetEmptyBufferAsDestinationBuffer: No empty buffers found!");
             
+            inputBuffers[selectedBuffer].Rewind();
+            selectedBuffer = nextSelectedBuffer;
             outputBuffers[selectedBuffer].ClearBuffer();
         }
 
@@ -101,9 +112,25 @@ namespace SequentialFileIO
             return selectedBuffer;
         }
 
+        public void FlushDestinationBuffer()
+        {
+            outputBuffers[selectedBuffer].FlushBuffer();
+        }
+
         public IInputBuffer GetInputBuffer(int bufferNumber)
         {
             return bufferNumber >= selectedBuffer ? inputBuffers[bufferNumber + 1] : inputBuffers[bufferNumber];
+        }
+
+        public int GetSumOfRecordsInInputBuffers()
+        {
+            var sum = 0;
+            for (var i = 0; i < NumberOfTemporaryBuffers; i++)
+            {
+                sum += getOutputBuffer(i).RecordsInBuffer;
+            }
+
+            return sum;
         }
     }
 }

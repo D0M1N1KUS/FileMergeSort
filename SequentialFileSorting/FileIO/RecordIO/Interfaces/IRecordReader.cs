@@ -4,5 +4,6 @@ namespace FileIO.RecordIO.Interfaces
     {
         IRecord GetNextRecord();
         bool HasNext();
+        void Restart();
     }
 }

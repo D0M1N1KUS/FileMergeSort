@@ -20,8 +20,7 @@ namespace SequentialFileIO_Test
             outputBuffers[1].LastAppendedRecord.Returns(expectedRecord);
             outputBuffers[2].LastAppendedRecord.Returns(Record.NullRecord);
             
-            var distributionBuffering = new DistributionBufferingIO(2, ref inputBuffers[2], ref outputBuffers[2],
-                ref inputBuffers, ref outputBuffers);
+            var distributionBuffering = new DistributionBufferingIO(ref inputBuffers, ref outputBuffers, 2);
             
             Assert.AreEqual(expectedRecord, distributionBuffering.GetOutputBuffer(0).LastAppendedRecord);
             Assert.AreEqual(expectedRecord, distributionBuffering.GetOutputBuffer(1).LastAppendedRecord);
@@ -39,8 +38,7 @@ namespace SequentialFileIO_Test
             outputBuffers[1].LastAppendedRecord.Returns(Record.NullRecord);
             outputBuffers[2].LastAppendedRecord.Returns(expectedRecord);
             
-            var distributionBuffering = new DistributionBufferingIO(2, ref inputBuffers[2], ref outputBuffers[2],
-                ref inputBuffers, ref outputBuffers);
+            var distributionBuffering = new DistributionBufferingIO(ref inputBuffers, ref outputBuffers, 2);
             distributionBuffering.SwitchToNextOutputBuffer();
             distributionBuffering.SwitchToNextOutputBuffer();
             
@@ -65,8 +63,7 @@ namespace SequentialFileIO_Test
             inputBuffers[2].GetNextRecord().Returns(records[0], records[1], records[2]);
             inputBuffers[2].HasDummy().Returns(false);
             
-            var distributionBuffering = new DistributionBufferingIO(2, ref inputBuffers[2], ref outputBuffers[2],
-                ref inputBuffers, ref outputBuffers);
+            var distributionBuffering = new DistributionBufferingIO(ref inputBuffers, ref outputBuffers, 2);
             distributionBuffering.WriteNextSeriesToBuffer(0);
             distributionBuffering.WriteNextSeriesToBuffer(0);
             distributionBuffering.WriteNextSeriesToBuffer(0);
