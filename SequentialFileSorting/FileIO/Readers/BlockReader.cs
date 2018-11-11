@@ -46,11 +46,11 @@ namespace FileIO
 
                 lengthOfCurrentBlock = streamReader.ReadBlock(FileBase.Block, 0, FileBase.BlockSize);
             }
-
+            NumberOfAccesses++;
+            
             if (!EndOfFile)
             {
                 CurrentBlockNumber++;
-                NumberOfAccesses++;
             }
             
             return lengthOfCurrentBlock;

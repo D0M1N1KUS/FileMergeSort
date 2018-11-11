@@ -99,7 +99,7 @@ namespace SequentialFileSorting
             {
                 BlockSize = int.Parse(TextBox_BlockSize.Text), Separator = " ",
                 SourceFileName = filePath,
-                TemporaryBufferFileDirectory = "D:\\"
+                TemporaryBufferFileDirectory = TextBox_BufferLocation.Text
             };
             var sortingParameters = new SortingParameters()
             {
@@ -128,9 +128,11 @@ namespace SequentialFileSorting
             enableButtons(false, false, false);
             enableCheckboxes(false, false, false);
             lockRecordCreationTools();
+            Label_StatusBarLabel.Content = "Busy...";
             try
             {
                 Sorter.Merger.Merge();
+                Sorter.RestoreOriginalFileName();
             }
             catch(Exception ex)
             {
@@ -171,9 +173,9 @@ namespace SequentialFileSorting
             infoString.Append(beginning);
             infoString.Append("Disk read-accesses: ");
             infoString.Append(Sorter.ReadAccesses);
-            infoString.Append(" Disk write-accesses: ");
+            infoString.Append(" | Disk write-accesses: ");
             infoString.Append(Sorter.WriteAccesses);
-            infoString.Append(" Phases: ");
+            infoString.Append(" | Phases: ");
             infoString.Append(Sorter.Steps);
             infoString.Append(".");
             if (Sorter.Merger.FileIsSorted)
@@ -189,7 +191,7 @@ namespace SequentialFileSorting
             enableCheckboxes(false, false, false);
             enableButtons(false, false, false);
             lockRecordCreationTools();
-
+            Label_StatusBarLabel.Content = "Busy...";
             try
             {
                 Sorter.Merger.Step();
@@ -229,7 +231,7 @@ namespace SequentialFileSorting
             if ((bool)CheckBox_ShowUnsortedFile.IsChecked && allowDisplayingFiles)
             {
                 Label_StatusBarLabel.Content = "The file has " +
-                    getNumberOfRecordsInFile(sender, e).ToString() + " records.";
+                    getNumberOfRecordsInFile(sender, e).ToString() + " records and " + PreSorting.GetNumberOfSeries(filePath) + " series.";
                 tryToDisplayTextIn(TextBlock_UnsortedFile);
             }
             else
@@ -281,7 +283,8 @@ namespace SequentialFileSorting
 
         private void displayFileInTextblock(TextBlock tb)
         {
-            string[] lines = File.ReadAllLines(Sorter.GetCurrentDestinationFilePath());
+            var path = Sorter.Merger.FileIsSorted ? filePath : Sorter.GetCurrentDestinationFilePath();
+            string[] lines = File.ReadAllLines(path);
             if ((bool)CheckBox_ShowRecordValues.IsChecked)
             {
                 addRecordValuesToEachRecord(ref lines);
@@ -301,10 +304,7 @@ namespace SequentialFileSorting
             for(int i = 0; i < lines.Length; i++)
             {
                 if (lines[i][0] != '\0')
-                {
-                    double recordValue = new Record(ValueComponentsSplitter.GetValues(lines[i])).Value;
-                    lines[i] += "\t[" + recordValue.ToString() + "]";
-                }
+                    lines[i] = "[" + new Record(ValueComponentsSplitter.GetValues(lines[i])).Value + "]\t" + lines[i];
             }
         }
 

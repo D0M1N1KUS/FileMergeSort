@@ -77,7 +77,7 @@ namespace SequentialFileIO
         private void appendRecord(IRecord record)
         {
             checkForEndOfSeries(record);
-            if (!record.IsDummy)
+            if (!record.IsDummy && !record.IsNull)
             {
                 Appender?.AppendRecord(record);
                 RecordsInBuffer++;

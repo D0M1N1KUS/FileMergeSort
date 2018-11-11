@@ -66,6 +66,8 @@
         </StatusBar>
         <Label x:Name="LabelT_Copy" Content="Block size" HorizontalAlignment="Right" Margin="0,54,163.75,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBox_BlockSize" Height="23" Margin="0,57,108,0" TextChanged="TextBox_BlockSize_OnTextChanged" TextWrapping="Wrap" Text="8" TextAlignment="Right" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50.167"/>
+        <Label x:Name="LabelT_Copy1" Content="Buffer location" HorizontalAlignment="Right" Margin="0,54,285,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox_BufferLocation" Height="23" Margin="0,57,228,0" TextChanged="TextBox_BlockSize_OnTextChanged" TextWrapping="Wrap" Text="D:\" TextAlignment="Right" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51"/>
 
 
 
