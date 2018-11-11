@@ -43,14 +43,15 @@ namespace RecordFileGenerator
         {
             desiredFileSize = size;
             currentFileSize = 0;
+            if(File.Exists(filePath)) File.Delete(filePath);
 
             using (var streamWriter = new StreamWriter(filePath, append: true))
             {
-                while(desiredFileSize > desiredFileSize)
+                while(desiredFileSize > currentFileSize)
                 {
                     var record = Generator.GenerateRandomRecord();
                     var currentLineSize = record.Length;
-                    streamWriter.Write(record.ToString());
+                    streamWriter.WriteLine(record.ToString());
                     currentFileSize += sizeType == GeneratorSizeType.FileSize ? currentLineSize : 1;
                     Progress = currentFileSize / desiredFileSize;
                 }

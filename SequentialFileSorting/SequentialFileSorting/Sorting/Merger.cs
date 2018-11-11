@@ -33,6 +33,7 @@ namespace SequentialFileSorting.Sorting
             BufferIO = bufferIO;
             this.numberOfInputBuffers = numberOfInputBuffers;
             Comparer = comparer;
+            lastDestinationBufferIndex = numberOfInputBuffers;
         }
 
         private object lockSteps;
@@ -47,7 +48,6 @@ namespace SequentialFileSorting.Sorting
 
         public void Merge()
         {
-            
             while(!FileIsSorted)
             {
                 Step();

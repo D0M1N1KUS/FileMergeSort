@@ -17,9 +17,9 @@ namespace SortingTests
             var sortedFileLinesArray = new string[] {"1", "2", "3", "4", "5", "6", "16", "17"};
             var sortedFileContent = string.Join(Environment.NewLine, sortedFileLinesArray) + Environment.NewLine;
             File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
-            var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
+            var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 3 };
             var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
-                TemporaryBufferFileDirectory = "D:\\"};
+                TemporaryBufferFileDirectory = "D:\\", Separator = " "};
             var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
             
             sorter.Distribution.Distribute();
@@ -44,7 +44,7 @@ namespace SortingTests
             File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
             var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
             var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
-                TemporaryBufferFileDirectory = "D:\\"};
+                TemporaryBufferFileDirectory = "D:\\", Separator = " "};
             var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
             
             sorter.Distribution.Distribute();
@@ -68,7 +68,7 @@ namespace SortingTests
             File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
             var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
             var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
-                TemporaryBufferFileDirectory = "D:\\"};
+                TemporaryBufferFileDirectory = "D:\\", Separator = " "};
             var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
             
             sorter.Distribution.Distribute();
@@ -93,7 +93,7 @@ namespace SortingTests
             File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
             var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
             var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
-                TemporaryBufferFileDirectory = "D:\\"};
+                TemporaryBufferFileDirectory = "D:\\", Separator = " "};
             var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
             
             sorter.Distribution.Distribute();
@@ -102,6 +102,27 @@ namespace SortingTests
             var actualFileContent = File.ReadAllText(testFilePath);
             
             Assert.AreEqual(sortedFileContent, actualFileContent);
+            Console.WriteLine("Statistics:\nRead accesses:\t{0}\nWrite acesses:\t{1}\nSteps:\t{2}",
+                sorter.ReadAccesses, sorter.WriteAccesses, sorter.Steps);
+            
+            File.Delete(testFilePath);
+        }
+        
+        [Test]
+        public void test()
+        {
+            var testFilePath = "D:\\TestFile.txt";
+            var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
+            var fileParameters = new FileParameters() { BlockSize = 8, SourceFileName = testFilePath, 
+                TemporaryBufferFileDirectory = "D:\\", Separator = " "};
+            var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
+            
+            sorter.Distribution.Distribute();
+            sorter.Merger.Merge();
+            sorter.RestoreOriginalFileName();
+            var actualFileContent = File.ReadAllText(testFilePath);
+            
+            Assert.IsTrue(true);
             Console.WriteLine("Statistics:\nRead accesses:\t{0}\nWrite acesses:\t{1}\nSteps:\t{2}",
                 sorter.ReadAccesses, sorter.WriteAccesses, sorter.Steps);
             

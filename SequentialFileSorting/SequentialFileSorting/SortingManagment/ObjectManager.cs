@@ -126,7 +126,7 @@ namespace SequentialFileSorting.SortingManagment
             recordAppenders = new IRecordAppender[numberOfFiles];
             for (var i = 0; i < numberOfFiles; i++)
             {
-                recordAppenders[i] = new RecordAppender(fileWriters[i]);
+                recordAppenders[i] = new RecordAppender(fileWriters[i], FileParameters.Separator);
             }
         }
 
