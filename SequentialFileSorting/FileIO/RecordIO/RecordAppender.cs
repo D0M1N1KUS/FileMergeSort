@@ -16,7 +16,7 @@ namespace FileIO.RecordIO
         public RecordAppender(IFileWriter fileWriter, string separator = null)
         {
             FileWriter = fileWriter;
-            Separator = separator ?? Environment.NewLine;
+            Separator = separator ?? " ";
         }
 
 

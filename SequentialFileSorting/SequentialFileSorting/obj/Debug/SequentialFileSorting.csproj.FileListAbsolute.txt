@@ -20,3 +20,7 @@ D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - S
 D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\SequentialFileSorting.csproj.GenerateResource.Cache
 D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\SequentialFileSorting.exe
 D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\SequentialFileSorting.pdb
+D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\ExceptionWindow.g.cs
+D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\RecordGeneratorWindow.g.cs
+D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\ExceptionWindow.baml
+D:\visual studio 2015\Projects\CollageProjects\Struktury Baz Danych\Projekt1 - Sortowanie plików sekwencyjnych 2018\SequentialFileSorting\SequentialFileSorting\obj\Debug\RecordGeneratorWindow.baml

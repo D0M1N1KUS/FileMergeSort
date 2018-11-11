@@ -32,7 +32,7 @@ namespace RecordFileGenerator
 
         public double[] GenerateRandomRecordValuesDoubleArray()
         {
-            var numberOfValuesInRecord = Randomizer.GetInt(0, 15);
+            var numberOfValuesInRecord = Randomizer.GetInt(1, 15);
             var values = new double[numberOfValuesInRecord];
             for (var i = 0; i < numberOfValuesInRecord; i++)
             {

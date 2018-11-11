@@ -9,10 +9,10 @@ namespace SequentialFileSorting.SortingManagment
         {
             if (pathToFile1 == pathToFile2) return;
             var temporaryFileNameGenerator = new TemporaryFileNameGenerator();
-            var tempName = temporaryFileNameGenerator.GetNextAvailableName();
+            var tempName = "D:\\" + temporaryFileNameGenerator.GetNextAvailableName();
             File.Move(pathToFile1, tempName);
             File.Move(pathToFile2, pathToFile1);
-            File.Move(tempName, pathToFile1);
+            File.Move(tempName, pathToFile2);
         }
     }
 }

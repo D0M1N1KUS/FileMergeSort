@@ -5,5 +5,6 @@ namespace SequentialFileSorting.SortingManagment
         public string SourceFileName;
         public string TemporaryBufferFileDirectory;
         public int BlockSize;
+        public string Separator;
     }
 }

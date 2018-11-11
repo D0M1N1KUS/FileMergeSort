@@ -42,7 +42,7 @@ namespace FileIO
                 }
             }
 
-            NumberOfAccesses++;
+            NumberOfAccesses = (BlockReader as BlockReader).NumberOfAccesses;
             
             return foundLinesQueue.Count > 0
                 ? foundLinesQueue.Dequeue()

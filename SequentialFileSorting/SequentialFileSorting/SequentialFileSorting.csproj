@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -53,11 +54,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExceptionWindow.xaml.cs">
+      <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IFrontendCallback.cs" />
     <Compile Include="Interfaces\Sorting\IDistributionCalculator.cs" />
     <Compile Include="Interfaces\Sorting\IMerging.cs" />
     <Compile Include="Interfaces\Sorting\IOptimalDistribution.cs" />
     <Compile Include="Interfaces\Sorting\IRecordValueComparer.cs" />
+    <Compile Include="RecordGeneratorWindow.xaml.cs">
+      <DependentUpon>RecordGeneratorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SortingManagment\FileParameters.cs" />
     <Compile Include="SortingManagment\ObjectManager.cs" />
     <Compile Include="SortingManagment\PostSorting.cs" />
@@ -70,6 +77,8 @@
     <Compile Include="Sorting\OptimalDistribution.cs" />
     <Compile Include="Sorting\PolyPhaseSorting.cs" />
     <Compile Include="Sorting\PreSorting.cs" />
+    <Compile Include="Utilities.cs" />
+    <Page Include="ExceptionWindow.xaml" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,6 +92,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RecordGeneratorWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

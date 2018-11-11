@@ -70,5 +70,10 @@ namespace SequentialFileSorting.Sorting
         {
             PostSorting.SwapFileNames(fileBases[Merger.DestinationBufferIndex].FilePath, FileParameters.SourceFileName);
         }
+
+        public string GetCurrentDestinationFilePath()
+        {
+            return fileBases[Merger.DestinationBufferIndex].FilePath;
+        }
     }
 }

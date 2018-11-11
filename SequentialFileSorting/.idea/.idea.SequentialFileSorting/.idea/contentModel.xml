@@ -146,6 +146,8 @@
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="ExceptionWindow.xaml" t="Include" />
+        <e p="ExceptionWindow.xaml.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="IFrontendCallback.cs" t="Include" />
           <e p="Sorting" t="Include">
@@ -164,6 +166,8 @@
           <e p="Resources.Designer.cs" t="Include" />
           <e p="Resources.resx" t="Include" />
         </e>
+        <e p="RecordGeneratorWindow.xaml" t="Include" />
+        <e p="RecordGeneratorWindow.xaml.cs" t="Include" />
         <e p="SequentialFileSorting.csproj" t="IncludeRecursive" />
         <e p="Sorting" t="Include">
           <e p="Distribution.cs" t="Include" />
@@ -181,6 +185,7 @@
           <e p="PostSorting.cs" t="Include" />
           <e p="SortingParameters.cs" t="Include" />
         </e>
+        <e p="Utilities.cs" t="Include" />
       </e>
       <e p="SequentialFileSorting.sln" t="IncludeFlat" />
       <e p="SortingTests" t="IncludeRecursive">
