@@ -7,7 +7,7 @@ using SequentialFileSorting.SortingManagment;
 namespace SortingTests
 {
     [TestFixture]
-    public class Tests
+    public class PolyPhaseSortingTests
     {
         [Test]
         public void sortRecordsInFile()
@@ -28,6 +28,8 @@ namespace SortingTests
             var actualFileContent = File.ReadAllText(testFilePath);
             
             Assert.AreEqual(sortedFileContent, actualFileContent);
+            Console.WriteLine("Statistics:\nRead accesses:\t{0}\nWrite acesses:\t{1}\nSteps:\t{2}",
+                sorter.ReadAccesses, sorter.WriteAccesses, sorter.Steps);
             
             File.Delete(testFilePath);
         }
@@ -51,6 +53,8 @@ namespace SortingTests
             var actualFileContent = File.ReadAllText(testFilePath);
             
             Assert.AreEqual(sortedFileContent, actualFileContent);
+            Console.WriteLine("Statistics:\nRead accesses:\t{0}\nWrite acesses:\t{1}\nSteps:\t{2}",
+                sorter.ReadAccesses, sorter.WriteAccesses, sorter.Steps);
             
             File.Delete(testFilePath);
         }
@@ -73,6 +77,8 @@ namespace SortingTests
             var actualFileContent = File.ReadAllText(testFilePath);
             
             Assert.AreEqual(sortedFileContent, actualFileContent);
+            Console.WriteLine("Statistics:\nRead accesses:\t{0}\nWrite acesses:\t{1}\nSteps:\t{2}",
+                sorter.ReadAccesses, sorter.WriteAccesses, sorter.Steps);
             
             File.Delete(testFilePath);
         }

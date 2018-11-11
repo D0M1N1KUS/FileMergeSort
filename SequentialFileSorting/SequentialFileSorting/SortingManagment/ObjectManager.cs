@@ -5,6 +5,7 @@ using FileIO.Builders;
 using FileIO.Interfaces;
 using FileIO.RecordIO;
 using FileIO.RecordIO.Interfaces;
+using FileIO.Writers;
 using FileIO.Writers.Interfaces;
 using SequentialFileIO;
 using SequentialFileSorting.Sorting;
@@ -31,6 +32,9 @@ namespace SequentialFileSorting.SortingManagment
 
         protected IRecordAppender[] recordAppenders;
         protected IFileWriter[] fileWriters;
+
+        protected IStatistics[] readAccessStatistics;
+        protected IStatistics[] writeAccessStatistics;
 
         protected int numberOfFiles;
         protected int indexOfSourceFile => numberOfFiles - 1;
@@ -81,23 +85,29 @@ namespace SequentialFileSorting.SortingManagment
         protected void setUpFileReaders()
         {
             fileReaders = new IFileReader[numberOfFiles];
+            readAccessStatistics = new IStatistics[numberOfFiles];
             for (var i = 0; i < numberOfFiles; i++)
             {
-                fileReaders[i] = new FileReaderBuilder()
+                var reader = new FileReaderBuilder()
                     .SetFileBase(fileBases[i])
                     .Build();
+                fileReaders[i] = reader;
+                readAccessStatistics[i] = (FileReader)reader;
             }
         }
 
         protected void setUpFileWriters()
         {
             fileWriters = new IFileWriter[numberOfFiles];
+            writeAccessStatistics = new IStatistics[numberOfFiles];
             for (var i = 0; i < numberOfFiles; i++)
             {
-                fileWriters[i] = new FileWriterBuilder()
+                var writer = new FileWriterBuilder()
                     .SetFileBase(fileBases[i])
                     .CreateNewFile(false)
                     .Build();
+                fileWriters[i] = writer;
+                writeAccessStatistics[i] = (BlockWriter)writer;
             }
         }
 
@@ -107,6 +117,7 @@ namespace SequentialFileSorting.SortingManagment
             for (var i = 0; i < numberOfFiles; i++)
             {
                 recordReaders[i] = new LineBasedRecordReader(fileReaders[i], new ValueComponentsSplitter());
+
             }
         }
 

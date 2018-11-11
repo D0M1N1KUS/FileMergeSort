@@ -26,7 +26,7 @@ namespace SequentialFileSorting.Sorting
         public int ExpectedNumberOfRecords { private get; set; } = -1;
         private int lastDestinationBufferIndex = 0;
 
-        private int steps = 0;
+        public int Steps { get; private set; } = 0;
 
         public Merger(int numberOfInputBuffers, IMergeBufferingIO bufferIO, IRecordValueComparer comparer)
         {
@@ -38,22 +38,6 @@ namespace SequentialFileSorting.Sorting
         private object lockSteps;
         
         public bool FileIsSorted { get; private set; } = false;
-        public int Steps {
-            get
-            {
-                lock (lockSteps)
-                {
-                    return steps;
-                }
-            }
-            private set
-            {
-                lock (lockSteps)
-                {
-                    steps = value;
-                }
-            }
-        }
         public int SeriesMerging { get; private set; } = 0;
         
         private bool allCurrentSeriesHaveNotEnded => 
@@ -81,7 +65,7 @@ namespace SequentialFileSorting.Sorting
                 mergeNextSeries();
                 SeriesMerging++;
             } 
-            steps++;
+            Steps++;
             BufferIO.SetAnyEmptyBufferAsDestinationBuffer();
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
@@ -18,6 +19,8 @@ namespace SequentialFileSorting.Sorting
         private Task mergeTask;
         
         public int Steps => Merger.Steps;
+        public long ReadAccesses => readAccessStatistics.Sum(statistic => statistic.NumberOfAccesses);
+        public long WriteAccesses => writeAccessStatistics.Sum(statistic => statistic.NumberOfAccesses);
         
         public PolyPhaseSorting(SortingParameters sortingParameters, FileParameters fileParameters)
         {

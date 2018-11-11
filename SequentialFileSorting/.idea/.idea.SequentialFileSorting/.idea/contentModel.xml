@@ -54,6 +54,7 @@
       <e p="FileIO_Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BlockSplitterTests.cs" t="Include" />
+        <e p="BlockWriterTests.cs" t="Include" />
         <e p="FileIO_Tests.csproj" t="IncludeRecursive" />
         <e p="FileReaderTests.cs" t="Include" />
         <e p="NewLineSeparatorTests.cs" t="Include" />
@@ -186,13 +187,13 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="DistributionCalculatorTests.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
+        <e p="PolyPhaseSortingTests.cs" t="Include" />
         <e p="PreSortingTests.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="SeriesTest.txt" t="Include" />
         <e p="SortingTests.csproj" t="IncludeRecursive" />
-        <e p="Tests.cs" t="Include" />
       </e>
       <e p="Tests" t="Include" />
     </e>

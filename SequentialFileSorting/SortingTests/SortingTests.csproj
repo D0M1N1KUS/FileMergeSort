@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="DistributionCalculatorTests.cs" />
     <Compile Include="PreSortingTests.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="PolyPhaseSortingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
