@@ -29,6 +29,8 @@ namespace SequentialFileSorting.Sorting
                 for (var j = 0; j < optimalDistribution.DummyRecordDistribution[i]; j++)
                     BufferIO.AddDummyRecord(i);
             }
+            
+            BufferIO.FlushOutputBuffers();
         }
     }
 }

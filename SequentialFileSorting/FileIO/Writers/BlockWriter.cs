@@ -30,6 +30,7 @@ namespace FileIO.Writers
                 foreach (var block in blocks)
                 {
                     streamWriter.Write(block);
+                    NumberOfAccesses++;
                 }
             }
         }
@@ -37,7 +38,6 @@ namespace FileIO.Writers
         public void WriteLine(string text)
         {
             Write(text + Environment.NewLine);
-            NumberOfAccesses++;
         }
 
         public void Flush()
@@ -47,7 +47,7 @@ namespace FileIO.Writers
             
             using (var streamWriter = new StreamWriter(FileBase.FilePath, append: true))
             {
-                streamWriter.Write(BlockSplitter.ExcessText);
+                streamWriter.Write(excessText);
                 NumberOfAccesses++;
             }
         }

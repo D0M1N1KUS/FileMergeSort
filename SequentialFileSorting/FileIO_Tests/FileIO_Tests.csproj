@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlockSplitterTests.cs" />
+    <Compile Include="BlockWriterTests.cs" />
     <Compile Include="FileReaderTests.cs" />
     <Compile Include="NewLineSeparatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,17 +18,63 @@ namespace SortingTests
             var sortedFileContent = string.Join(Environment.NewLine, sortedFileLinesArray) + Environment.NewLine;
             File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
             var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
-            var fileParameters = new FileParameters() { BlockSize = 1, SourceFileName = testFilePath, 
+            var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
                 TemporaryBufferFileDirectory = "D:\\"};
             var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
             
             sorter.Distribution.Distribute();
             sorter.Merger.Merge();
             sorter.RestoreOriginalFileName();
-
             var actualFileContent = File.ReadAllText(testFilePath);
             
             Assert.AreEqual(sortedFileContent, actualFileContent);
+            
+            File.Delete(testFilePath);
+        }
+
+        [Test]
+        public void sortRecordsInFile_FileContainsOnlyOneRecord()
+        {
+            var testFilePath = "D:\\FileToSort.txt";
+            var unsortedFileLinesArray = new string[] {"1"};
+            var sortedFileLinesArray = new string[] {"1"};
+            var sortedFileContent = string.Join(Environment.NewLine, sortedFileLinesArray) + Environment.NewLine;
+            File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
+            var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
+            var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
+                TemporaryBufferFileDirectory = "D:\\"};
+            var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
+            
+            sorter.Distribution.Distribute();
+            sorter.Merger.Merge();
+            sorter.RestoreOriginalFileName();
+            var actualFileContent = File.ReadAllText(testFilePath);
+            
+            Assert.AreEqual(sortedFileContent, actualFileContent);
+            
+            File.Delete(testFilePath);
+        }
+
+        [Test]
+        public void sortAlreadySortedfile()
+        {
+            var testFilePath = "D:\\FileToSort.txt";
+            var unsortedFileLinesArray = new string[] {"1", "2", "3", "4", "5"};
+            var sortedFileContent = string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine;
+            File.WriteAllText(testFilePath, string.Join(Environment.NewLine, unsortedFileLinesArray) + Environment.NewLine);
+            var sortingParameters = new SortingParameters() { NumberOfTemporaryFiles = 2 };
+            var fileParameters = new FileParameters() { BlockSize = 4, SourceFileName = testFilePath, 
+                TemporaryBufferFileDirectory = "D:\\"};
+            var sorter = new PolyPhaseSorting(sortingParameters, fileParameters);
+            
+            sorter.Distribution.Distribute();
+            sorter.Merger.Merge();
+            sorter.RestoreOriginalFileName();
+            var actualFileContent = File.ReadAllText(testFilePath);
+            
+            Assert.AreEqual(sortedFileContent, actualFileContent);
+            
+            File.Delete(testFilePath);
         }
     }
 }
